@@ -18,6 +18,14 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function teacher(){
+        return $this->belongsTo('App\Teacher');
+    }
+
+    public function student(){
+        return $this->belongsTo('App\Student');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
