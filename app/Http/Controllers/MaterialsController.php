@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Material;
 use Illuminate\Http\Request;
+use Session;
 
 class MaterialsController extends Controller
 {
@@ -13,7 +15,7 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.materials.index')->with('materials', Material::all());
     }
 
     /**
@@ -23,7 +25,7 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.materials.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class MaterialsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+        ]);
+
+        $material = Material::create([
+            'title' => $request->title,
+        ]);
+
+        $material->save();
+
+        Session::flash('success', 'Material created successfuly');
+
+        return redirect()->route('materials.index');
     }
 
     /**
@@ -56,7 +70,8 @@ class MaterialsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.materials.edit')->with('material', Material::findOrFail($id));
+
     }
 
     /**
@@ -68,7 +83,17 @@ class MaterialsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+        ]);
+
+        $material = Material::findOrFail($id);
+        $material->title = $request->title;
+        $material->save();
+
+        Session::flash('success', 'Material updated successfuly');
+
+        return redirect()->route('materials.index');
     }
 
     /**
@@ -79,6 +104,10 @@ class MaterialsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Material::destroy($id);
+
+        Session::flash('success', 'Material deleted successfuly');
+
+        return redirect()->route('materials.index');
     }
 }

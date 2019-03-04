@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
+use App\Question;
+use App\Quiz;
+use Auth;
+use Session;
+use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 class QuizzesController extends Controller
@@ -13,7 +20,7 @@ class QuizzesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.quizzes.index')->with('quizzes', Quiz::all());
     }
 
     /**
@@ -23,7 +30,11 @@ class QuizzesController extends Controller
      */
     public function create()
     {
-        //
+
+        $subjects = Subject::all();
+        return view('admin.quizzes.create')
+            ->with('subjects', $subjects);
+
     }
 
     /**
@@ -34,7 +45,24 @@ class QuizzesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $teacher = Teacher::where('user_id', Auth::id())->get()->first();
+        $this->validate($request,[
+            'title' => 'required',
+            'subject_id' => 'required',
+
+        ]);
+
+        $quiz = Quiz::create([
+            'title' => $request->title,
+            'subject_id' => $request->subject_id,
+            'teacher_id' => $teacher->id,
+        ]);
+
+        $quiz->save();
+
+        Session::flash('success', 'Teacher created successfully!');
+
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -56,7 +84,9 @@ class QuizzesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $quiz = Quiz::findOrFail($id);
+        $subjects = Subject::all();
+        return view('admin.quizzes.edit',compact('quiz','subjects'));
     }
 
     /**
@@ -68,7 +98,17 @@ class QuizzesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $quiz = Quiz::findOrFail($id);
+        $this->validate($request,[
+            'title' => 'required|max:255',
+            'subject_id' => 'required'
+        ]);
+        $quiz->title=$request->title;
+        $quiz->subject_id=$request->subject_id;
+        $quiz->save();
+
+        Session::flash('success','Quiz was successfuly updated');
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -79,6 +119,10 @@ class QuizzesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Quiz::destroy($id);
+
+        Session::flash('success', 'Quiz deleted successfuly');
+
+        return redirect()->route('quizzes.index');
     }
 }

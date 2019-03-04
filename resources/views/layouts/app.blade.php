@@ -10,8 +10,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome-free/css/all.min.css')}}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -71,10 +79,79 @@
             </div>
         </nav>
 
-        @yield('content')
+        <main class="py-4 px-2">
+            <div class="container">
+                <div class="row">
+                    @if(Auth::check())
+                        <div class="col-lg-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="{{route('home')}}">Home</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('departments.index')}}">Department</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('materials.index')}}">Materials</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('question_types.index')}}">Question Types</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('teachers.index')}}">Teachers</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('subjects.index')}}">Subjects</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('quizzes.index')}}">Quizzes</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('questions.index')}}">Questions</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('answers.index')}}">Answers</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+                    <div class="col-lg-8">
+                        @yield('content')
+                    </div>
+
+                </div>
+            </div>
+
+        </main>>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/toastr.js') }}"></script>
+
+    <script>
+        toastr.options.closeButton = true;
+        @if(Session::has('success'))
+        toastr.success("{{Session::get('success')}}");
+        @endif
+
+        @if(Session::has('info'))
+        toastr.info("{{Session::get('info')}}");
+        @endif
+
+        @if(Session::has('error'))
+        toastr.info("{{Session::get('error')}}");
+        @endif
+
+        @if(Session::has('warning'))
+        toastr.info("{{Session::get('warning')}}");
+        @endif
+
+    </script>
+
+
+
+    @yield('sripts')
+
 </body>
 </html>
