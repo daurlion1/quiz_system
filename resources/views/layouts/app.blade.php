@@ -112,6 +112,9 @@
                                 <li class="list-group-item">
                                     <a href="{{route('answers.index')}}">Answers</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <a href="{{route('themes.index')}}">Themes</a>
+                                </li>
                             </ul>
                         </div>
                     @endif

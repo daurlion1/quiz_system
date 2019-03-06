@@ -2,61 +2,67 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Subject;
+use App\Theme;
+use Auth;
+use Session;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 class ThemesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('admin.themes.index')->with('themes', Theme::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
+
+        $subjects = Subject::all();
+
+        return view('admin.themes.create')
+
+            ->with('subjects', $subjects);
+
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function store(Request $request)
     {
-        //
+        $teacher = Teacher::where('user_id', Auth::id())->get()->first();
+        $this->validate($request,[
+            'name' => 'required',
+            'subject_id' => 'required',
+
+
+
+        ]);
+
+        $theme = Theme::create([
+            'name' => $request->name,
+            'subject_id' => $request->subject_id,
+
+
+        ]);
+
+        $theme->save();
+
+        Session::flash('success', 'Theme created successfully!');
+
+        return redirect()->route('themes.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $theme = Theme::findOrFail($id);
+        $subjects = Subject::all();
+
+        return view('admin.themes.edit',compact('theme','subjects'));
     }
 
     /**
@@ -68,17 +74,27 @@ class ThemesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $theme = Theme::findOrFail($id);
+        $this->validate($request,[
+            'name' => 'required',
+            'subject_id' => 'required',
+
+        ]);
+        $theme->name=$request->name;
+        $theme->subject_id=$request->subject_id;
+
+        $theme->save();
+
+        Session::flash('success','Theme was successfuly updated');
+        return redirect()->route('themes.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Theme::where('id', $id)->forceDelete();
+
+        Session::flash('success', 'Theme deleted successfuly');
+
+        return redirect()->route('themes.index');
     }
 }

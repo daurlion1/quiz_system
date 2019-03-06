@@ -95,7 +95,7 @@ class QuestionsController extends Controller
 
     public function destroy($id)
     {
-        Question::destroy($id);
+        Question::where('id', $id)->forceDelete();
 
         Session::flash('success', 'Question deleted successfuly');
 

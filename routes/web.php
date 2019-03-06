@@ -63,6 +63,7 @@ Route::post('/quizzes/store', ['uses' => 'QuizzesController@store', 'as' => 'qui
 Route::get('/quiz/edit/{id}', ['uses' => 'QuizzesController@edit', 'as' => 'quiz.edit']);
 Route::post('/quiz/update/{id}', ['uses' => 'QuizzesController@update', 'as' => 'quiz.update']);
 Route::get('/quiz/delete/{id}',['uses' => 'QuizzesController@destroy', 'as' => 'quiz.delete']);
+Route::get('/quiz/show/{id}',['uses' => 'QuizzesController@show', 'as' => 'quiz.show']);
 
 
 
@@ -80,3 +81,11 @@ Route::post('/answers/store', ['uses' => 'AnswersController@store', 'as' => 'ans
 Route::get('/answer/edit/{id}', ['uses' => 'AnswersController@edit', 'as' => 'answer.edit']);
 Route::post('/answer/update/{id}', ['uses' => 'AnswersController@update', 'as' => 'answer.update']);
 Route::get('/answer/delete/{id}',['uses' => 'AnswersController@destroy', 'as' => 'answer.delete']);
+
+
+Route::get('/themes', ['uses' => 'ThemesController@index', 'as' => 'themes.index']);
+Route::get('/themes/create', ['uses' => 'ThemesController@create', 'as' => 'themes.create']);
+Route::post('/themes/store', ['uses' => 'ThemesController@store', 'as' => 'theme.store']);
+Route::get('/theme/edit/{id}', ['uses' => 'ThemesController@edit', 'as' => 'theme.edit']);
+Route::post('/themeupdate/{id}', ['uses' => 'ThemesController@update', 'as' => 'theme.update']);
+Route::get('/theme/delete/{id}',['uses' => 'ThemesController@destroy', 'as' => 'theme.delete']);
