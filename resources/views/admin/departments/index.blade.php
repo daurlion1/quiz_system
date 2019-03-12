@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <header class="page-header">
-        <h2>Department Table</h2>
+        <h2>Departments Table</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -10,7 +10,7 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Department</span></li>
+                <li><span>Departments</span></li>
                 <li><span>Table</span></li>
             </ol>
 
@@ -26,7 +26,7 @@
                 <a href="#" class="fa fa-times"></a>
             </div>
 
-            <h2 class="panel-title">Department</h2>
+            <h2 class="panel-title">Departments</h2>
         </header>
         <div class="panel-body">
             <div class="row">
@@ -46,18 +46,19 @@
                 <tbody>
                 @foreach($departments as $department)
                     <tr class="gradeX">
-                        <td>
-                            <p>{{$department->name}}</p>
-                        </td>
+                        <td>{{$department->name}}</td>
                         <td class="actions">
-                            <a href="{{route('department.edit',['id' => $department->id])}}"
-                               class="on-default edit-row">
-                                <span class="fa fa-pencil"></span>
-                                <a href="{{route('department.delete', ['id' => $department->id])}}"
-                                   class="on-default remove-row">
-                                    <span class="fa fa-trash-o"></span>
+                            <form id="deleteForm" method="POST"
+                                  action="{{route('department.delete', ['id' => $department->id])}}">
+                                {{ method_field('DELETE')}}
+                                {{csrf_field()}}
+                                <a href="{{route('department.edit',['id' => $department->id])}}">
+                                    <span class="fa fa-pencil fa-lg"></span>
                                 </a>
-                            </a>
+                                <button type="submit" class="btn btn-sm" onclick="return confirm('Do you want to delete item?')">
+                                    <span class="fa fa-trash-o fa-lg"></span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

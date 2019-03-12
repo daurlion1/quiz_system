@@ -40,23 +40,22 @@
 
 </script>
 <script>
-    (function( $ ) {
+    (function ($) {
 
         'use strict';
 
-        var datatableInit = function() {
+        var datatableInit = function () {
 
             var $table = $('#datatable-tabletools');
             $table.dataTable({
                 bProcessing: true,
-                sAjaxSource: $table.data('url')
             });
 
         };
 
-        $(function() {
+        $(function () {
             datatableInit();
         });
 
-    }).apply( this, [ jQuery ]);
+    }).apply(this, [jQuery]);
 </script>

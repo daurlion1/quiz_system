@@ -1,51 +1,71 @@
 @extends('layouts.app')
 @section('content')
+    <header class="page-header">
+        <h2>Teachers Table</h2>
 
-    <div class="card card-default">
-        <div class="card-header">
-            Teachers
-            <a href="{{route('teachers.create')}}" class="btn btn-xs btn-success" style="float:right">
-                <span class="fa fa-plus fa-2x"></span>
-            </a>
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Teachers</span></li>
+                <li><span>Table</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle"></a>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
+    </header>
+
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Teachers</h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <a href="{{route('teacher.create')}}" id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped" id="datatable-tabletools">
                 <thead>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <tr>
+                    <th>Teacher name</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                @if($teachers->count() > 0)
-                    @foreach($teachers as $teacher)
-                        <tr>
-                            <td>
-                                <p>{{$teacher->name}}</p>
-                            </td>
-                            <td>
-                                <p>{{$teacher->department->name}}</p>
-                            </td>
-                            <td>
-                                <a href="{{route('teacher.edit',['id' => $teacher->id])}}" class="btn btn-xs btn-info" >
-                                    <span class="fa fa-pen fa"></span>
+                @foreach($teachers as $teacher)
+                    <tr class="gradeX">
+                        <td>{{$teacher->name}}</td>
+                        <td>{{$teacher->department->name}}</td>
+                        <td class="actions">
+                            <form id="deleteForm" method="POST"
+                                  action="{{route('teacher.delete', ['id' => $teacher->id])}}">
+                                {{ method_field('DELETE')}}
+                                {{csrf_field()}}
+                                <a href="{{route('teacher.edit',['id' => $teacher->id])}}">
+                                    <span class="fa fa-pencil fa-lg"></span>
                                 </a>
-                            </td>
-                            <td>
-                                <a href="{{route('teacher.delete', ['id' => $teacher->id])}}" class="btn btn-xs btn-danger">
-                                    <span class="fa fa-trash fa"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    <tr>
-                        <th>No teachers yet!</th>
+                                <button type="submit" class="btn btn-sm" onclick="return confirm('Do you want to delete item?')">
+                                    <span class="fa fa-trash-o fa-lg"></span>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
-
+    </section>
 @endsection

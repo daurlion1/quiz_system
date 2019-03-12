@@ -1,49 +1,48 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card card-default">
-        <div class="card-header">
-            Question Types
-            <a href="{{route('question_type.create')}}" class="btn btn-xs btn-success" style="float:right">
-                <span class="fa fa-plus fa-2x"></span>
-            </a>
+    <header class="page-header">
+        <h2>Question Types Table</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Question types</span></li>
+                <li><span>Table</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle"></a>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
+    </header>
+
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Question Types</h2>
+        </header>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped" id="datatable-tabletools">
                 <thead>
-                <th>Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <tr>
+                    <th>Name</th>
+                </tr>
                 </thead>
                 <tbody>
-                @if ($question_types->count() > 0)
-                    @foreach($question_types as $question_type)
-                        <tr>
-                            <td>
-                                <p>{{$question_type->name}}</p>
-                            </td>
-                            <td>
-                                <a href="{{route('question_type.edit',['id' => $question_type->id ])}}"
-                                   class="btn btn-xs btn-info">
-                                    <span class="fa fa-pen fa"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{route('question_type.delete', ['id' => $question_type->id])}}"
-                                   class="btn btn-xs btn-danger">
-                                    <span class="fa fa-trash fa"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    <tr>
-                        <th>
-                            No question_types yet!
-                        </th>
+                @foreach($question_types as $question_type)
+                    <tr class="gradeX">
+                        <td>{{$question_type->name}}</td>
                     </tr>
-                @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 @endsection

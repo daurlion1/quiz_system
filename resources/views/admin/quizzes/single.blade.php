@@ -6,14 +6,15 @@
         <div class="card-body">
             <p>{{$quiz->title}}</p>
             @foreach($questions as $question)
-                <p>{{$i++,$question->title}}</p>
+                <p>{{$i++.'. '.$question->title}}</p>
                 @foreach($question->answers as $answer)
-                    <input type="radio" value="{{$answer->value}}">
-                    <label for="{{$answer->content}}">{{$answer->content}}</label>
+                    <label for="{{$answer->content}}">
+                        <input type="radio" id="{{$answer->content}}" name="{{$question->title}}" value="{{$answer->right}}">
+                        {{$answer->content}}
+                    </label>
                     <br>
                 @endforeach
             @endforeach
         </div>
     </div>
-
 @endsection

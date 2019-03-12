@@ -1,55 +1,73 @@
 @extends('layouts.app')
 @section('content')
+    <header class="page-header">
+        <h2>Questions Table</h2>
 
-    <div class="card card-default">
-        <div class="card-header">
-            Questions
-            <a href="{{route('questions.create')}}" class="btn btn-xs btn-success" style="float:right">
-                <span class="fa fa-plus fa-2x"></span>
-            </a>
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Questions</span></li>
+                <li><span>Table</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle"></a>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
+    </header>
+
+    <!-- start: page -->
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Questions</h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <a href="{{route('question.create')}}" id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped" id="datatable-tabletools">
                 <thead>
-                <th>Title</th>
-                <th>Question Value</th>
-                <th>Quiz</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <tr>
+                    <th>Title</th>
+                    <th>Question value</th>
+                    <th>Quiz</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                @if($questions->count() > 0)
-                    @foreach($questions as $question)
-                        <tr>
-                            <td>
-                                <p>{{$question->title}}</p>
-                            </td>
-                            <td>
-                                <p>{{$question->question_value}}</p>
-                            </td>
-                            <td>
-                                <p>{{$question->quiz->title}}</p>
-                            </td>
-                            <td>
-                                <a href="{{route('question.edit',['id' => $question->id])}}" class="btn btn-xs btn-info" >
-                                    <span class="fa fa-pen fa"></span>
+                @foreach($questions as $question)
+                    <tr class="gradeX">
+                            <td>{{$question->title}}</td>
+                            <td>{{$question->question_value}}</td>
+                            <td>{{$question->quiz->title}}</td>
+                        <td class="actions">
+                            <form id="deleteForm" method="POST"
+                                  action="{{route('question.delete', ['id' => $question->id])}}">
+                                {{ method_field('DELETE')}}
+                                {{csrf_field()}}
+                                <a href="{{route('question.edit',['id' => $question->id])}}">
+                                    <span class="fa fa-pencil fa-lg"></span>
                                 </a>
-                            </td>
-                            <td>
-                                <a href="{{route('question.delete', ['id' => $question->id])}}" class="btn btn-xs btn-danger">
-                                    <span class="fa fa-trash fa"></span>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    <tr>
-                        <th>No questions yet!</th>
+                                <button type="submit" class="btn btn-sm" onclick="return confirm('Do you want to delete item?')">
+                                    <span class="fa fa-trash-o fa-lg"></span>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
-
+    </section>
 @endsection

@@ -11,25 +11,31 @@
 <div class="header-right">
 
     <div id="userbox" class="userbox">
+        @auth
         <a href="#" data-toggle="dropdown">
-            <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                <span class="name">John Doe Junior</span>
+            <div class="profile-info" data-lock-name="{{Auth::user()->name}}" data-lock-email="{{Auth::user()->email}}">
+                <span class="name">{{ Auth::user()->name }}</span>
                 <span class="role">administrator</span>
             </div>
 
             <i class="fa custom-caret"></i>
         </a>
-
         <div class="dropdown-menu">
             <ul class="list-unstyled">
                 <li class="divider"></li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
-                </li>
-                <li>
-                    <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
+                    <a role="menuitem" tabindex="-1" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <i class="fa fa-power-off"></i>
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </li>
             </ul>
         </div>
+            @endauth
     </div>
 </div>

@@ -1,46 +1,85 @@
 @extends('layouts.app')
 @section('content')
     @include('admin.includes.error')
-    <div class="card card-default">
-        <div class="card-header">
-            Create Question
+    <header class="page-header">
+        <h2>New Question</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>New</span></li>
+                <li><span>Question</span></li>
+            </ol>
+            <a class="sidebar-right-toggle"></a>
         </div>
-        <div class="card-body">
-            <form action="{{route('question.store')}}" method="POST">
+    </header>
+
+    <!-- start: page -->
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal form-bordered" action="{{route('question.store')}}" method="POST">
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" name='title'>
-                </div>
-                <div class="form-group">
-                    <label for="question_value">Question Value</label>
-                    <input type="text" class="form-control" name='question_value'>
-                </div>
-                <div class="form-group">
-                    <label for="quiz">Quiz</label>
-                    <select name="quiz_id" class="form-control" placeholder="Quiz" required>
-                        @foreach($quizzes as $quiz)
-                            <option value="{{$quiz->id}}">{{$quiz->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="question_type">Question type</label>
-                    <select name="question_type_id" class="form-control" placeholder="Question type" required>
-                        @foreach($question_types as $question_type)
-                            <option value="{{$question_type->id}}">{{$question_type->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                            <a href="#" class="fa fa-times"></a>
+                        </div>
 
-
-                <div class="form-group">
-                    <div class="text-center">
-                        <button class="btn btn-success btn-block" type="submit">Create Question</button>
+                        <h2 class="panel-title">Add Question</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputTitle">Title <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputTitle" name="title" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputQuestionValue">Question value <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" id="inputQuestionValue" name="question_value" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputQuiz">Quiz <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <select class="form-control mb-md" id="inputQuiz" name="quiz_id" required>
+                                    @foreach($quizzes as $quiz)
+                                        <option value="{{$quiz->id}}">{{$quiz->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputQuestionType">Question type<span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <select class="form-control mb-md" id="inputQuestionType" name="question_type_id" required>
+                                    @foreach($question_types as $question_type)
+                                        <option value="{{$question_type->id}}">{{$question_type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <footer class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                                <button type="reset" class="btn btn-default">Reset</button>
+                            </div>
+                        </div>
+                    </footer>
+                </section>
             </form>
         </div>
     </div>
-
 @endsection
