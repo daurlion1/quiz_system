@@ -27,6 +27,7 @@ class CreateStudentQuizResultsTable extends Migration
             $table->foreign('student_quiz_id')
                 ->references('id')
                 ->on('student_quizzes');
+            $table->boolean('correct')->default(0);
 
             $table->timestamps();
         });

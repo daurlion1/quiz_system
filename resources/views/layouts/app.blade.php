@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="fixed">
+<html lang="{{ app()->getLocale() }}">
 <head>
     @include('admin.includes.head')
 </head>

@@ -17,8 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/quizzes', 'QuizzesController@index')->name('quiz');
+Route::get('/home', 'StudentQuizzesController@results')->name('home');
+Route::get('/index', function () {
+    return view('userSide.index');
+})->name('index');
+Route::get('/courses', 'UserSideController@courses')->name('courses');
 
 Route::get('/departments', ['uses' => 'DepartmentsController@index', 'as' => 'departments.index' ]);
 Route::get('/department/create', ['uses' => 'DepartmentsController@create', 'as' => 'department.create']);
@@ -89,3 +92,9 @@ Route::post('/themes/store', ['uses' => 'ThemesController@store', 'as' => 'theme
 Route::get('/theme/edit/{id}', ['uses' => 'ThemesController@edit', 'as' => 'theme.edit']);
 Route::post('/themeupdate/{id}', ['uses' => 'ThemesController@update', 'as' => 'theme.update']);
 Route::delete('/theme/delete/{id}',['uses' => 'ThemesController@destroy', 'as' => 'theme.delete']);
+
+Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 'as' => 'student.quiz.store']);
+
+Route::get('/course/{id}', function () {
+    return view('userSide.course');
+});

@@ -61,7 +61,7 @@ class QuizzesController extends Controller
 
         $quiz->save();
 
-        Session::flash('success', 'Teacher created successfully!');
+        Session::flash('success', 'Quiz created successfully!');
 
         return redirect()->route('quizzes.index');
     }
