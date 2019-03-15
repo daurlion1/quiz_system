@@ -24,6 +24,7 @@ class CreateStudentQuizzesTable extends Migration
                 ->references('id')
                 ->on('quizzes');
             $table->boolean('accepted')->default(false);
+            $table->integer('result');
             $table->timestamps();
         });
     }

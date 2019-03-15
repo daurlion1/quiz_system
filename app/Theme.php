@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','subject_id'];
 
     public function subject(){
         return $this->belongsTo('App\Subject');

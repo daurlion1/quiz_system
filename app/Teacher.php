@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'user_id', 'department_id',];
 
     public function user(){
         return $this->belongsTo('App\User');
@@ -22,6 +22,6 @@ class Teacher extends Model
     }
 
     public function subjects(){
-        return $this->belongsToMany('App\Subject');
+        return $this->belongsToMany('App\Subject', 'teacher_subjects', 'teacher_id', 'subject_id');
     }
 }

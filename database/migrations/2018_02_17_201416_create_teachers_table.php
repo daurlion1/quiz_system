@@ -23,7 +23,8 @@ class CreateTeachersTable extends Migration
             $table->integer('department_id')->unsigned();
             $table->foreign('department_id')
                 ->references('id')
-                ->on('departments');
+                ->on('departments')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

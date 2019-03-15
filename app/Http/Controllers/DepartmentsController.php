@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use Illuminate\Http\Request;
+use Session;
 
 class DepartmentsController extends Controller
 {
@@ -13,7 +15,7 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.departments.index')->with('departments', Department::all());
     }
 
     /**
@@ -23,7 +25,7 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.departments.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+        $department = Department::create([
+           'name' => $request->name,
+        ]);
+
+        $department->save();
+
+        Session::flash('success', 'Department created successfuly');
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -56,7 +70,7 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.departments.edit')->with('department', Department::findOrFail($id));
     }
 
     /**
@@ -68,7 +82,17 @@ class DepartmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+        $department = Department::findOrFail($id);
+        $department->name = $request->name;
+        $department->save();
+
+        Session::flash('success', 'Department updated successfuly');
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -79,6 +103,10 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Department::destroy($id);
+
+        Session::flash('success', 'Department deleted successfuly');
+
+        return redirect()->route('departments.index');
     }
 }

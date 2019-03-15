@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use Illuminate\Http\Request;
+use Session;
 
 class SubjectsController extends Controller
 {
@@ -13,7 +15,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.subjects.index')->with('subjects', Subject::all());
     }
 
     /**
@@ -23,7 +25,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subjects.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+        $subject = Subject::create([
+            'name' => $request->name,
+        ]);
+
+        $subject->save();
+
+        Session::flash('success', 'Subject created successfully');
+
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -56,7 +70,7 @@ class SubjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.subjects.edit')->with('subject', Subject::findOrFail($id));
     }
 
     /**
@@ -68,7 +82,17 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+        $subject = Subject::findOrFail($id);
+        $subject->name = $request->name;
+        $subject->save();
+
+        Session::flash('success', 'Subject updated successfuly');
+
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -79,6 +103,10 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subject::destroy($id);
+
+        Session::flash('success', 'Subject deleted successfuly');
+
+        return redirect()->route('subjects.index');
     }
 }
