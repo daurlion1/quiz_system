@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name','description'];
 
     public function quizzes(){
         return $this->hasMany('App\Quiz');
     }
 
     public function teachers(){
-        return $this->belongsToMany('App\Teacher');
+        return $this->belongsToMany('App\Teacher', 'teacher_subjects','subject_id','teacher_id');
     }
 
     public function themes(){

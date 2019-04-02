@@ -21,7 +21,7 @@
     <!-- start: page -->
     <div class="row">
         <div class="col-lg-12">
-            <form class="form-horizontal form-bordered"  action="{{route('material.store')}}" method="POST">
+                <form action="{{ route('material.store') }}" method="POST" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <section class="panel">
                     <header class="panel-heading">
@@ -30,15 +30,13 @@
                             <a href="#" class="fa fa-times"></a>
                         </div>
 
+
                         <h2 class="panel-title">Add Material</h2>
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputTitle">Title <span
-                                        class="required">*</span></label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputName" name="title" required/>
-                            </div>
+                            <label for="title">Title</label>
+                            <input type="file" name="title" class="form-control">
                         </div>
                     </div>
                     <footer class="panel-footer">

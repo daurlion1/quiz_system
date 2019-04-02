@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col">
                         <ul class="breadcrumbs_list d-flex flex-row align-items-center justify-content-start">
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="courses.html">courses</a></li>
-                            <li>english</li>
+                            <li><a href="{{route('index')}}">Home</a></li>
+                            <li><a href="{{route('courses')}}">Courses</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -54,13 +54,22 @@
                 @foreach($subjects as $subject)
                     <div class="col-lg-4 course_col">
                         <div class="course">
-                            <div class="course_image"><img src="{{asset('userSide/images/course_4.jpg')}}" alt=""></div>
+                            <div class="course_image"><a href="{{route('userSide.course',['id' => $subject->id])}}"><img
+                                            src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
                             <div class="course_body">
-                                <div class="course_title"><a href="course.html">{{$subject->name}}</a></div>
+                                <div class="course_title"><a
+                                            href="{{route('userSide.course',['id' => $subject->id])}}">{{$subject->name}}</a>
+                                </div>
+
                                 <div class="course_info">
                                     <ul>
-                                        <li><a href="instructors.html">Sarah Parker</a></li>
-                                        <li><a href="#">English</a></li>
+                                        @if(!$subject->teachers->isEmpty())
+                                            <li><a href="instructors.html">{{$subject->teachers->first()->name}}</a>
+                                            </li>
+                                        @else
+                                            <li><a href="instructors.html">{{$subject->name}}</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="course_text">
@@ -87,4 +96,5 @@
 @endsection
 @section('scripts')
     <script src="{{asset('userSide/js/courses.js')}}"></script>
+
 @endsection

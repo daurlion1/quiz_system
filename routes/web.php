@@ -95,6 +95,5 @@ Route::delete('/theme/delete/{id}',['uses' => 'ThemesController@destroy', 'as' =
 
 Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 'as' => 'student.quiz.store']);
 
-Route::get('/course/{id}', function () {
-    return view('userSide.course');
-});
+
+Route::get('/course/{id}', ['uses' => 'UserSideController@course', 'as' => 'userSide.course']);
