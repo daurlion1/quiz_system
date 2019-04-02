@@ -66,6 +66,28 @@
                             <span>Answers</span>
                         </a>
                     </li>
+                    <li class="{{$request->segment(1) == 'settings' ? 'nav-active' : ''}}">
+                        <a href="{{route('settings.index')}}">
+                            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                            <span class="sr-only">Loading...</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="{{$request->segment(1) == 'results' ? 'nav-active' : ''}}">
+                        <a href="{{route('student.quizzes')}}">
+                            <i class="fa fa-check " aria-hidden="true"></i>
+                            <span>Test Results</span>
+                        </a>
+                    </li>
+                    {{--<li class="{{$request->segment(1) == 'asd' ? 'nav-active' : ''}}">--}}
+                        {{--<a href="{{route('student.results')}}">--}}
+                            {{--<i class="fa fa-reply" aria-hidden="true"></i>--}}
+                            {{--<span>Answers</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+
+
+
 
 
                 </ul>

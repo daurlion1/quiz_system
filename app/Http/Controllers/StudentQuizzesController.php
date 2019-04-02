@@ -7,6 +7,8 @@ use App\Question;
 use App\Quiz;
 use App\Student;
 use App\StudentQuiz;
+use App\TestResult;
+use App\User;
 use Session;
 use Auth;
 use App\StudentQuizResult;
@@ -14,6 +16,21 @@ use Illuminate\Http\Request;
 
 class StudentQuizzesController extends Controller
 {
+   public  function  index()
+   {
+       return view('admin.test_results.index')->with('test_results', StudentQuiz::all());
+   }
+
+   public function show($id)
+   {
+       $answers=null;
+       $result = StudentQuizResult::where('student_quiz_id', $id)->get();
+       foreach ($result as $question){
+           $question->answer_id = Answer::findOrFail($question->answer_id);
+           $question->answer = Answer::where('question_id', $question->question_id)->get();}
+       return view('admin.test_results.show')
+           ->with('results', $result);}
+
     public function store(Request $request){
         $result = 0;
         $student = Student::where('user_id', Auth::id())->get()->first();
