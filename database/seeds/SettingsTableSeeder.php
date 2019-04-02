@@ -17,9 +17,9 @@ class SettingsTableSeeder extends Seeder
                 'title'  => 'Learning System',
                 'phone'  => '87776665544',
                 'site_name' => 'ELT',
-                'copyright' => 'Copyright is a legal right, existing in many countries, that grants the creator of an original work ',
+                'copyright' => 'BAD',
                 'address' => 'Manasa34a',
-                'email' => 'iitu@mail.ru',
+                'email' => 'iitu@mai.ru',
             ],
         ]);
     }
