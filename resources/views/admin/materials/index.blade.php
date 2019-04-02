@@ -46,7 +46,13 @@
                 <tbody>
                 @foreach($materials as $material)
                     <tr class="gradeX">
-                        <td>{{$material->title}}</td>
+                        <td>
+                            <video width="320" height="240" controls>
+                                <source src="{{$material->title}}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
                                   action="{{route('material.delete', ['id' => $material->id])}}">

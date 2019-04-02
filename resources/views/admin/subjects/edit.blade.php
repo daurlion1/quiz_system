@@ -31,7 +31,7 @@
                             <a href="#" class="fa fa-times"></a>
                         </div>
 
-                        <h2 class="panel-title">Edit Subject: {{$subject->title}}</h2>
+                        <h2 class="panel-title">Edit Subject: {{$subject->name}}</h2>
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
@@ -40,6 +40,12 @@
                             <div class="col-md-6">
                                 <input value="{{$subject->name}}" type="text" class="form-control"
                                        id="inputTitle" name="name" required/>
+                            </div>
+                            <label class="col-md-3 control-label" for="inputName">Description <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input value="{{$subject->name}}" type="text" class="form-control"
+                                       id="inputTitle" name="description" required/>
                             </div>
                         </div>
                     </div>

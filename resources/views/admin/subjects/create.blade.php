@@ -39,6 +39,11 @@
                             <div class="col-md-6">
                                 <input type="text" class="form-control" id="inputName" name="name" required/>
                             </div>
+                            <label class="col-md-3 control-label" for="inputName">Description <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputName" name="description" required/>
+                            </div>
                         </div>
                     </div>
                     <footer class="panel-footer">
