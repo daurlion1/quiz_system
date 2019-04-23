@@ -36,6 +36,7 @@ class QuizzesController extends Controller
         return view('admin.quizzes.create')
             ->with('subjects', $subjects);
 
+
     }
 
     /**
@@ -50,7 +51,6 @@ class QuizzesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'subject_id' => 'required',
-
         ]);
 
         $quiz = Quiz::create([
@@ -126,7 +126,8 @@ class QuizzesController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * Ples remove this video if
+     * even we start the project and
      * @param  int $id
      * @return \Illuminate\Http\Response
      */

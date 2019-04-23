@@ -69,7 +69,33 @@
                                 </select>
                             </div>
                         </div>
+
+                    @for($question=1;$question<=4;$question++)
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputContent">Content <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputContent" name="{{'content_' . $question}}" required>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputRight">Right<span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <select class="form-control mb-md" id="inputRicght" name="right" required>
+                                    <option value="1">Right</option>
+                                    <option value="0">Wrong</option>
+                                </select>
+                            </div>
+                        </div>
+                        @endfor
                     </div>
+
+
                     <footer class="panel-footer">
                         <div class="row">
                             <div class="col-sm-9 col-sm-offset-3">

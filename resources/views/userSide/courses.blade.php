@@ -73,7 +73,7 @@
                                     </ul>
                                 </div>
                                 <div class="course_text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla.</p>
+                                    <p><a href="{{route('userSide.course',['id' => $subject->id])}}">{{$subject->description}}</a></p>
                                 </div>
                             </div>
                             <div class="course_footer d-flex flex-row align-items-center justify-content-start">

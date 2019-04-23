@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in !
+
                         <div class="card-deck">
                             @foreach($results as $result)
                             <div class="card">

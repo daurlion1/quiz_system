@@ -39,11 +39,13 @@ class SubjectsController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'description' => 'required',
+
         ]);
 
         $subject = Subject::create([
             'name' => $request->name,
-            'description' => $request ->description,
+            'description' => $request->description,
+
         ]);
 
         $subject->save();
@@ -86,13 +88,15 @@ class SubjectsController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
-            'description' => 'description',
+            'description' => 'required',
+
 
         ]);
 
         $subject = Subject::findOrFail($id);
         $subject->name = $request->name;
         $subject->description = $request->description;
+
         $subject->save();
 
         Session::flash('success', 'Subject updated successfuly');
