@@ -18,9 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'StudentQuizzesController@results')->name('home');
-Route::get('/index', function () {
-    return view('userSide.index');
-})->name('index');
+
 Route::get('/courses', 'UserSideController@courses')->name('courses');
 
 Route::get('/departments', ['uses' => 'DepartmentsController@index', 'as' => 'departments.index' ]);
@@ -97,11 +95,9 @@ Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 
 Route::get('/student/quiz/test_results',['uses' => 'StudentQuizzesController@index', 'as' => 'student.quizzes']);
 Route::get('/student/quiz/test_results/show/{id}',['uses' => 'StudentQuizzesController@show', 'as' => 'student.results']);
 
-Route::get('/course/{id}',  ['uses' => 'UserSideController@course', 'as' => 'course']);
-
-
-Route::get('/courses',  ['uses' => 'UserSideController@courses', 'as' => 'courses']);
-
+Route::get('/course/{id}', function () {
+    return view('userSide.course');
+});
 
 Route::get('/settings', ['uses' => 'SettingsController@index', 'as' => 'settings.index']);
 Route::get('/setting/edit/{id}', ['uses' => 'SettingsController@edit', 'as' => 'setting.edit']);

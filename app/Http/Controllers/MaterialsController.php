@@ -36,16 +36,22 @@ class MaterialsController extends Controller
      */
     public function store(Request $request)
     {
-//        $this->validate($request,[
-//            'title' => 'required|mimes:mp4',
-//        ]);
+        $this->validate($request,[
+            'title' => 'required|file',
+        ]);
         $title = $request->title;
         $title_new_name = time().$title->getClientOriginalName();
-        $title->move('uploads/videos',$title_new_name);
+        $title_extension = time().$title->getClientOriginalExtension();
 
+        if($title->type)
+        $title->move('uploads/videos',$title_new_name);
             Material::create([
-            'title' => '/uploads/videos/'.$title_new_name,
-        ]);
+                'title' => '/uploads/videos/'.$title_new_name]);
+
+
+
+
+
 
         Session::flash('success', 'Material created successfuly');
 

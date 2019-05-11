@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use App\Quiz;
 use App\QuestionType;
@@ -23,10 +24,10 @@ class QuestionsController extends Controller
         $quizzes = Quiz::all();
         $question_types = QuestionType::all();
 
+
         return view('admin.questions.create')
             ->with('quizzes', $quizzes)
             ->with('question_types', $question_types);
-
 
     }
 
@@ -40,6 +41,8 @@ class QuestionsController extends Controller
             'question_value' => 'required|integer|between:1,5',
             'quiz_id' => 'required',
             'question_type_id' => 'required',
+            'content' => 'required',
+            'right' => 'required '
 
 
         ]);
@@ -50,10 +53,30 @@ class QuestionsController extends Controller
             'question_value' => $request->question_value,
             'question_type_id' => $request->question_type_id
 
+
         ]);
 
         $question->save();
 
+        foreach ($request->input() as $key => $content) {
+            if (strpos($key, 'content') !== false && $content != '') {
+              Answer::create(
+                    [
+                        'question_id' => $question->id,
+                        'content' => $request->content,
+                        'right' => $request->right,
+                    ]);
+
+            }
+
+        }
+//        Answer::create(
+//            [
+//                'question_id' => $question->id,
+//                'content' => $request->content,
+//                'right' => $request->right,
+//            ]);
+//
         Session::flash('success', 'Question created successfully!');
 
         return redirect()->route('questions.index');
@@ -95,7 +118,7 @@ class QuestionsController extends Controller
 
     public function destroy($id)
     {
-        Question::where('id', $id)->forceDelete();
+        Question::where('id', $id)->forceDelete(image_type_to_extension( cubrid_db_parameter()));
 
         Session::flash('success', 'Question deleted successfuly');
 
