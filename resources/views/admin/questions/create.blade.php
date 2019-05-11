@@ -70,18 +70,24 @@
                             </div>
                         </div>
 
-                    @for($question=1;$question<=4;$question++)
+
+                        @for($question=1;$question<=4;$question++)
                         <div class="form-group">
+
                             <label class="col-md-3 control-label" for="inputContent">Content <span
                                         class="required">*</span></label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputContent" name="{{'content_' . $question}}" required>
+
+                                <input type="text" class="form-control" id="inputContent" name="content" required>
                             </div>
-
-
-
-
                         </div>
+
+
+
+
+
+
+
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputRight">Right<span
                                         class="required">*</span></label>
