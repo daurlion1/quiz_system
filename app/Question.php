@@ -21,7 +21,7 @@ class Question extends Model
     }
 
     public function themes(){
-        return $this->belongsToMany('App\Theme');
+        return $this->belongsToMany('App\Theme','question_themes','question_id','theme_id');
     }
 
     public function studentQuizResults(){

@@ -52,13 +52,14 @@
 
                 <!-- Course -->
                 @foreach($subjects as $subject)
+                    @if(!$subject->isPsychological)
                     <div class="col-lg-4 course_col">
                         <div class="course">
-                            <div class="course_image"><a href="{{route('userSide.course',['id' => $subject->id])}}"><img
+                            <div class="course_image"><a href="{{route('course',['id' => $subject->id])}}"><img
                                             src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
                             <div class="course_body">
                                 <div class="course_title"><a
-                                            href="{{route('userSide.course',['id' => $subject->id])}}">{{$subject->name}}</a>
+                                            href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
                                 </div>
 
                                 <div class="course_info">
@@ -85,6 +86,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 @endforeach
             </div>
         </div>

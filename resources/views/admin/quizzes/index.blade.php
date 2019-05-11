@@ -32,7 +32,8 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="mb-md">
-                        <a href="{{route('quiz.create')}}" id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></a>
+                        <a href="{{route('quiz.create')}}" id="addToTable" class="btn btn-primary">Add <i
+                                    class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,11 @@
                             <a href="{{route('quiz.show', ['id' => $quiz->id])}}">{{$quiz->title}}</a>
                         </td>
                         <td>
-                            <p>{{$quiz->subject->name}}</p>
+                            @if(!$quiz->isPsychological)
+                                <p>{{$quiz->subject->name}}</p>
+                            @else
+                                <p>Психологический</p>
+                            @endif
                         </td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
@@ -61,7 +66,8 @@
                                 <a href="{{route('quiz.edit',['id' => $quiz->id])}}">
                                     <span class="fa fa-pencil fa-lg"></span>
                                 </a>
-                                <button type="submit" class="btn btn-sm" onclick="return confirm('Do you want to delete item?')">
+                                <button type="submit" class="btn btn-sm"
+                                        onclick="return confirm('Do you want to delete item?')">
                                     <span class="fa fa-trash-o fa-lg"></span>
                                 </button>
                             </form>
