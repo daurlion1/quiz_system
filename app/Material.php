@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
-    protected $fillable = ['title'];
+    protected $fillable = ['title','extension'];
 
     public function themeMaterials(){
         return $this->hasMany('App\ThemeMaterial');

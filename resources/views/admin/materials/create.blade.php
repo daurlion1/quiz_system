@@ -33,10 +33,11 @@
 
                         <h2 class="panel-title">Add Material</h2>
                     </header>
+
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="file" name="title" class="form-control">
+                            <label for="extension">Material</label>
+                            <input type="file" name="file" class="form-control">
                         </div>
                     </div>
                     <footer class="panel-footer">

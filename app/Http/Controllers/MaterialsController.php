@@ -37,23 +37,43 @@ class MaterialsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|file',
+            'file' => 'required|file',
         ]);
-        $title = $request->title;
-        $title_new_name = time().$title->getClientOriginalName();
-        $title_extension = time().$title->getClientOriginalExtension();
 
-        if($title->type)
-        $title->move('uploads/videos',$title_new_name);
-            Material::create([
-                'title' => '/uploads/videos/'.$title_new_name]);
+        $paths = '';
+        $type = '';
+
+        $extension = $request->file;
+
+        $new_extension = time().$extension->getClientOriginalName();
+
+        if($extension->getClientOriginalExtension() == 'mp4') {
+            $extension->move('uploads/videos',$new_extension);
+            $paths='/uploads/videos/'.$new_extension;
+            $type = 'Video';
+
+        }
+        else if($extension->getClientOriginalExtension() == 'mp3'){
+            $extension->move('uploads/audios',$new_extension);
+            $paths='/uploads/audios/'.$new_extension;
+            $type = 'Audio';
+
+
+        }
+
+        Material::create([
+            'extension' => $paths,
+            'title' => $type,
+]);
+            Session::flash('success', 'Material created successfuly');
 
 
 
 
 
 
-        Session::flash('success', 'Material created successfuly');
+
+
 
         return redirect()->route('materials.index');
     }
