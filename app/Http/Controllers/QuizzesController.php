@@ -79,10 +79,9 @@ class QuizzesController extends Controller
 
         $questions = Question::where('quiz_id', $quiz->id)->get();
 
-        foreach ($questions as $question){
+        foreach ($questions as $question) {
             $question->answers = Answer::where('question_id', $question->id)->get();
         }
-
 
 
         return view('admin.quizzes.single')->with(compact('quiz', 'questions', 'i'));

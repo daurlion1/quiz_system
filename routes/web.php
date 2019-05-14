@@ -12,15 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('userSide.index');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'StudentQuizzesController@results')->name('home');
-Route::get('/index',function(){
-    return view('userSide.index');
-})->name('index');
 
 Route::get('/courses', 'UserSideController@courses')->name('courses');
 
@@ -91,14 +88,16 @@ Route::get('/themes', ['uses' => 'ThemesController@index', 'as' => 'themes.index
 Route::get('/themes/create', ['uses' => 'ThemesController@create', 'as' => 'themes.create']);
 Route::post('/themes/store', ['uses' => 'ThemesController@store', 'as' => 'theme.store']);
 Route::get('/theme/edit/{id}', ['uses' => 'ThemesController@edit', 'as' => 'theme.edit']);
-Route::post('/themeupdate/{id}', ['uses' => 'ThemesController@update', 'as' => 'theme.update']);
+Route::post('/theme/update/{id}', ['uses' => 'ThemesController@update', 'as' => 'theme.update']);
 Route::delete('/theme/delete/{id}',['uses' => 'ThemesController@destroy', 'as' => 'theme.delete']);
 
 Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 'as' => 'student.quiz.store']);
 Route::get('/student/quiz/test_results',['uses' => 'StudentQuizzesController@index', 'as' => 'student.quizzes']);
 Route::get('/student/quiz/test_results/show/{id}',['uses' => 'StudentQuizzesController@show', 'as' => 'student.results']);
 
-Route::get('/course/{id}',['uses' => 'UserSideController@course', 'as' => 'userSide.course']);
+Route::get('/course/{id}', function () {
+    return view('userSide.course');
+});
 
 Route::get('/settings', ['uses' => 'SettingsController@index', 'as' => 'settings.index']);
 Route::get('/setting/edit/{id}', ['uses' => 'SettingsController@edit', 'as' => 'setting.edit']);

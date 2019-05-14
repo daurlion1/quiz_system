@@ -17,8 +17,9 @@ class QuizSeeder extends Seeder
             array('title'=>'Информатика', 'teacher_id'=> '1',
                 'subject_id' => '1', 'isPsychological' => '0',
                 'created_at' => now(), 'updated_at' => now()),
-//            array('name'=>'company', 'guard_name'=> 'web',
-//                'created_at' => now(), 'updated_at' => now()),
+            array('title'=>'Определение характера', 'teacher_id'=> null,
+                'subject_id' => null, 'isPsychological' => '1',
+                'created_at' => now(), 'updated_at' => now()),
         );
         DB::table('quizzes')->insert($data);
     }
