@@ -75,9 +75,23 @@ class QuizzesController extends Controller
     public function show($id)
     {
         $i = 1;
-        $quiz = Quiz::where('id', $id)->get()->first();
-
-        $questions = Question::where('quiz_id', $quiz->id)->get();
+        $questions = array();
+        $quiz = Quiz::findOrFail($id);
+        $quizThemes = $quiz->subject->themes;
+        if ($quiz->isPsychological) {
+            $questions = Question::where('quiz_id', $quiz->id)->get();
+        } else {
+            foreach ($quizThemes as $theme) {
+                $themeId = $theme->id;
+                $question_themes = Question::where('quiz_id', $quiz->id)->whereHas('themes', function ($q)
+                use ($themeId) {
+                    $q->where('theme_id', $themeId);
+                })->get()->random(2);
+                foreach ($question_themes as $theme) {
+                    $questions[] = $theme;
+                }
+            }
+        }
 
         foreach ($questions as $question) {
             $question->answers = Answer::where('question_id', $question->id)->get();
