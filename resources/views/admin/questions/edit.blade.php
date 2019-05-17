@@ -63,15 +63,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputQuestionType">Question type<span
+                            <label class="col-md-3 control-label" for="inputQuestionType">Theme<span
                                         class="required">*</span></label>
                             <div class="col-md-6">
-                                <select class="form-control mb-md" id="inputQuestionType" name="question_type_id" required>
-                                    @foreach($question_types as $question_type)
-                                        @if($question_type->id == $question->question_type_id)
-                                            <option selected value="{{$question_type->id}}">{{$question_type->name}}</option>
+                                <select class="form-control mb-md" id="inputThemeId" name="theme_id" required>
+                                    @foreach($themes as $theme)
+                                        @if($theme->id == $question->theme_id)
+                                            <option selected value="{{$theme->id}}">{{$theme->name}}</option>
                                         @else
-                                            <option value="{{$question_type->id}}">{{$question_type->name}}</option>
+                                            <option value="{{$theme->id}}">{{$theme->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>

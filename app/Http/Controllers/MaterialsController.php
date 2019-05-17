@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Subject;
+use App\Theme;
 use Illuminate\Http\Request;
 use Session;
 
@@ -25,7 +27,11 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        return view('admin.materials.create');
+        $term = array('name' =>array('Audial','Visual'));
+        $subject_id = Subject::where('isPsychological',1)->first()->id;
+        $themes = Theme::where('subject_id', '!=', $subject_id)->get();
+        return view('admin.materials.create')
+            ->with('themes', $themes);
     }
 
     /**
@@ -38,6 +44,7 @@ class MaterialsController extends Controller
     {
         $this->validate($request,[
             'file' => 'required|file',
+            'theme' => 'required',
         ]);
 
         $paths = '';
@@ -64,6 +71,7 @@ class MaterialsController extends Controller
         Material::create([
             'extension' => $paths,
             'title' => $type,
+            'theme_id' => $request->theme,
 ]);
             Session::flash('success', 'Material created successfuly');
 

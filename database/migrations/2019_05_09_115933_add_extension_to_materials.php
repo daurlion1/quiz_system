@@ -13,9 +13,8 @@ class AddExtensionToMaterials extends Migration
      */
     public function up()
     {
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('materials', function (Blueprint $table) {
+            $table->string('extension')->after('title');
         });
     }
 

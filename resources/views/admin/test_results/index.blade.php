@@ -42,7 +42,7 @@
                         <tr class="gradeX">
                             <td><a href="{{route('student.results', ['id' => $result->id])}}">{{$result->quiz->title}}</a></td>
                             <td>{{$result->student->user->name}}</td>
-                            <td>{{$result->result}}</td>
+                            <td>{{$result->result}}/{{$result->total}}</td>
 
                         </tr>
                     @endforeach

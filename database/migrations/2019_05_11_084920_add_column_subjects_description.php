@@ -16,6 +16,7 @@ class AddColumnSubjectsDescription extends Migration
         Schema::table('subjects', function (Blueprint $table) {
             $table->string('description')->after('name');
         });
+
     }
 
     /**
@@ -25,6 +26,6 @@ class AddColumnSubjectsDescription extends Migration
      */
     public function down()
     {
-        //
+
     }
 }

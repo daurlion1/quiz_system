@@ -6,6 +6,7 @@ use App\Answer;
 use App\Question;
 use App\Quiz;
 use App\QuestionType;
+use App\Theme;
 use Auth;
 use Session;
 use App\Teacher;
@@ -23,9 +24,10 @@ class QuestionsController extends Controller
 
         $quizzes = Quiz::all();
         $question_types = QuestionType::all();
-
+        $themes = Theme::where('name', '!=', 'Audial')->where('name', '!=', 'Visual')->get();
 
         return view('admin.questions.create')
+            ->with('themes', $themes)
             ->with('quizzes', $quizzes)
             ->with('question_types', $question_types);
 
@@ -40,7 +42,7 @@ class QuestionsController extends Controller
             'title' => 'required',
             'question_value' => 'required|integer|between:1,5',
             'quiz_id' => 'required',
-            'question_type_id' => 'required',
+            'theme_id' => 'required',
             'content' => 'required',
             'right' => 'required '
 
@@ -50,26 +52,27 @@ class QuestionsController extends Controller
         $question = Question::create([
             'title' => $request->title,
             'quiz_id' => $request->quiz_id,
+            'theme_id' => $request->title_id,
             'question_value' => $request->question_value,
-            'question_type_id' => $request->question_type_id
+            'question_type_id' => 1,
 
 
         ]);
 
         $question->save();
 
-        foreach ($request->input() as $key => $content) {
-            if (strpos($key, 'content') !== false && $content != '') {
-              Answer::create(
-                    [
-                        'question_id' => $question->id,
-                        'content' => $request->content,
-                        'right' => $request->right,
-                    ]);
-
-            }
-
-        }
+//        foreach ($request->input() as $key => $content) {
+//            if (strpos($key, 'content') !== false && $content != '') {
+//              Answer::create(
+//                    [
+//                        'question_id' => $question->id,
+//                        'content' => $request->content,
+//                        'right' => $request->right,
+//                    ]);
+//
+//            }
+//
+//        }
 //        Answer::create(
 //            [
 //                'question_id' => $question->id,
@@ -84,10 +87,11 @@ class QuestionsController extends Controller
 
     public function edit($id)
     {
+        $themes = Theme::where('name', '!=', 'Audial')->where('name', '!=', 'Visual')->get();
         $question = Question::findOrFail($id);
         $quizzes = Quiz::all();
         $question_types = QuestionType::all();
-        return view('admin.questions.edit',compact('question','quizzes','question_types'));
+        return view('admin.questions.edit',compact('question','quizzes','question_types','themes'));
     }
 
     /**
@@ -104,12 +108,12 @@ class QuestionsController extends Controller
             'title' => 'required',
             'question_value' => 'required|integer|between:1,5',
             'quiz_id' => 'required',
-            'question_type_id' => 'required',
+            'theme_id' => 'required',
         ]);
         $question->title=$request->title;
         $question->question_value=$request->question_value;
         $question->quiz_id=$request->quiz_id;
-        $question->question_type_id=$request->question_type_id;
+        $question->theme_id=$request->theme_id;
         $question->save();
 
         Session::flash('success','Question was successfuly updated');

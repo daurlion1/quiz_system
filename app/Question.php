@@ -20,8 +20,8 @@ class Question extends Model
         return $this->hasMany('App\Answer');
     }
 
-    public function themes(){
-        return $this->belongsToMany('App\Theme','question_themes','question_id','theme_id');
+    public function theme(){
+        return $this->belongsTo('App\Theme');
     }
 
     public function studentQuizResults(){

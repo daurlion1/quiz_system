@@ -15,7 +15,7 @@
         <a href="#" data-toggle="dropdown">
             <div class="profile-info" data-lock-name="{{Auth::user()->name}}" data-lock-email="{{Auth::user()->email}}">
                 <span class="name">{{ Auth::user()->name }}</span>
-                <span class="role">administrator</span>
+                <span class="role">@if(Auth::user()->teacher)Teacher @else Student @endif</span>
             </div>
 
             <i class="fa custom-caret"></i>

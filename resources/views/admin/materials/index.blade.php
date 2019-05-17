@@ -41,6 +41,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Material</th>
+                    <th>Theme</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -62,6 +63,7 @@
                                 @endif
 
                         </td>
+                        <td>{{$material->theme->name}}</td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
                                   action="{{route('material.delete', ['id' => $material->id])}}">

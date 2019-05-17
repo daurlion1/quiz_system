@@ -13,10 +13,10 @@ class Theme extends Model
     }
 
     public function questions(){
-        return $this->belongsToMany('App\Question','question_themes','theme_id','question_id');
+        return $this->belongsToMany('App\Question');
     }
 
-    public function materialThemes(){
-        return $this->hasMany('App\ThemeMaterial');
+    public function materials(){
+        return $this->hasMany('App\Material');
     }
 }

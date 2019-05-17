@@ -36,19 +36,21 @@ class StudentQuizzesController extends Controller
     public function store(Request $request)
     {
         $result = 0;
+        $total = 0;
         $student = Student::where('user_id', Auth::id())->get()->first();
         $themes = array();
         $student_quiz = StudentQuiz::create([
             'student_id' => $student->id,
             'quiz_id' => $request->quiz_id,
             'accepted' => 1,
+            'total' => $total,
             'result' => $result
         ]);
 
         foreach ($request->input('questions', []) as $key => $question) {
             $status = 0;
             $question_value = Question::findorFail($question);
-
+            $total += $question_value->question_value;
             if ($request->input('answers.' . $question) != null
                 && Answer::find($request->input('answers.' . $question))->right
             ) {
@@ -74,7 +76,7 @@ class StudentQuizzesController extends Controller
             foreach ($questions as $question) {
                 $question_values[] = array(
                     'question_value' => $question->question_value,
-                    'theme' => $question->themes->first()->id,
+                    'theme' => $question->theme->id,
                 );
             }
             $result_question_values = array();
@@ -94,7 +96,7 @@ class StudentQuizzesController extends Controller
             foreach ($questions2 as $question) {
                 $question_values2[] = array(
                     'question_value' => $question->question_value,
-                    'theme' => $question->themes->first()->id,
+                    'theme' => $question->theme->id,
                 );
             }
             $result_question_values2 = array();
@@ -137,7 +139,7 @@ class StudentQuizzesController extends Controller
             $visual_count = 0;
 
             foreach ($getCorrect as $getCorrect) {
-                $getThemes = $getCorrect->question->themes->first();
+                $getThemes = $getCorrect->question->theme;
                 $themes[] = $getThemes->name;
             }
             $student = Student::where('user_id', Auth::id());
@@ -153,9 +155,10 @@ class StudentQuizzesController extends Controller
         }
 
         $student_quiz->update(['result' => $result]);
+        $student_quiz->update(['total' => $total]);
         Session::flash('success', 'Тест пройден!');
 
-        return redirect()->route('quizzes.index');
+        return redirect()->route('index');
 
     }
 

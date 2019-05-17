@@ -16,11 +16,11 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 255);
-            $table->integer('teacher_id')->unsigned();
+            $table->integer('teacher_id')->unsigned()->nullable();
             $table->foreign('teacher_id')
                 ->references('id')
                 ->on("teachers");
-            $table->integer('subject_id')->unsigned();
+            $table->integer('subject_id')->unsigned()->nullable();
             $table->foreign('subject_id')
             ->references('id')
             ->on('subjects');

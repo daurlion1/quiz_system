@@ -42,6 +42,7 @@
                     <th>Title</th>
                     <th>Question value</th>
                     <th>Quiz</th>
+                    <th>Theme</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -51,6 +52,7 @@
                             <td>{{$question->title}}</td>
                             <td>{{$question->question_value}}</td>
                             <td>{{$question->quiz->title}}</td>
+                            <td>{{$question->theme->name}}</td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
                                   action="{{route('question.delete', ['id' => $question->id])}}">

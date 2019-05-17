@@ -48,36 +48,30 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="section_title text-center">Popular Online Courses</h2>
+                    <h2 class="section_title text-center">Online Courses</h2>
                 </div>
             </div>
             <div class="row courses_row">
 
-                <!-- Course -->
+                @foreach($subjects as $subject)
                 <div class="col-lg-4 course_col">
                     <div class="course">
                         <div class="course_image"><img src="{{asset('userSide/images/course_1.jpg')}}" alt=""></div>
                         <div class="course_body">
-                            <div class="course_title"><a href="course.html">Vocabulary</a></div>
+                            <div class="course_title"><a href="#"></a></div>
                             <div class="course_info">
                                 <ul>
-                                    <li><a href="instructors.html">Sarah Parker</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">{{$subject->teachers->first()->name}}</a></li>
+                                    <li><a href="#">{{$subject->name}}</a></li>
                                 </ul>
                             </div>
                             <div class="course_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla.</p>
+                                <p>{{$subject->description}}</p>
                             </div>
-                        </div>
-                        <div class="course_footer d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_students"><i class="fa fa-user" aria-hidden="true"></i><span>10</span>
-                            </div>
-                            <div class="course_rating ml-auto"><i class="fa fa-star"
-                                                                  aria-hidden="true"></i><span>4,5</span></div>
-                            <div class="course_mark course_free trans_200"><a href="#">Free</a></div>
                         </div>
                     </div>
                 </div>
+                    @endforeach
             </div>
         </div>
     </div>
@@ -90,33 +84,34 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="section_title text-center">The Best Tutors in Town</h2>
+                    <h2 class="section_title text-center">Tutors</h2>
                 </div>
             </div>
             <div class="row instructors_row">
 
                 <!-- Instructor -->
+                @foreach($teachers as $teacher)
                 <div class="col-lg-4 instructor_col">
                     <div class="instructor text-center">
                         <div class="instructor_image_container">
                             <div class="instructor_image"><img src="{{asset('userSide/images/instructor_1.jpg')}}"
                                                                alt=""></div>
                         </div>
-                        <div class="instructor_name"><a href="instructors.html">Sarah Parker</a></div>
+                        <div class="instructor_name"><a href="#">{{$teacher->name}} {{$teacher->user->name}}</a></div>
                         <div class="instructor_title">Teacher</div>
                         <div class="instructor_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu
-                                metus in, sagittis fringilla tortor.</p>
+                            <p>{{$teacher->department->name}}</p>
                         </div>
                         <div class="instructor_social">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                {{--<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
                             </ul>
                         </div>
                     </div>
                 </div>
+                    @endforeach
             </div>
         </div>
     </div>

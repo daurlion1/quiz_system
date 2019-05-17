@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentQuiz extends Model
 {
-    protected $fillable = ['student_id', 'quiz_id', 'accepted', 'result'];
+    protected $fillable = ['student_id', 'quiz_id', 'accepted', 'result', 'total'];
 
     public function quiz(){
         return $this->belongsTo('App\Quiz');
