@@ -17,7 +17,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->student){
+        if(!Auth::user()->teacher){
             Session::flash('error','You do not have permission!');
             return redirect()->back();
         }
