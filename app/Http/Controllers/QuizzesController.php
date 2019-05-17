@@ -83,10 +83,7 @@ class QuizzesController extends Controller
         } else {
             foreach ($quizThemes as $theme) {
                 $themeId = $theme->id;
-                $question_themes = Question::where('quiz_id', $quiz->id)->whereHas('themes', function ($q)
-                use ($themeId) {
-                    $q->where('theme_id', $themeId);
-                })->get()->random(2);
+                $question_themes = Question::where('quiz_id', $quiz->id)->where('theme_id', $theme->id)->get()->random(2);
                 foreach ($question_themes as $theme) {
                     $questions[] = $theme;
                 }
