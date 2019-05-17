@@ -25,11 +25,18 @@ class QuestionsController extends Controller
         $quizzes = Quiz::all();
         $question_types = QuestionType::all();
         $themes = Theme::where('name', '!=', 'Audial')->where('name', '!=', 'Visual')->get();
-
+        $correct_options = [
+            'option1' => 'Option #1',
+            'option2' => 'Option #2',
+            'option3' => 'Option #3',
+            'option4' => 'Option #4',
+            'option5' => 'Option #5'
+        ];
         return view('admin.questions.create')
             ->with('themes', $themes)
             ->with('quizzes', $quizzes)
-            ->with('question_types', $question_types);
+            ->with('question_types', $question_types)
+            ->with('correct_options', $correct_options);
 
     }
 
@@ -50,14 +57,22 @@ class QuestionsController extends Controller
         $question = Question::create([
             'title' => $request->title,
             'quiz_id' => $request->quiz_id,
-            'theme_id' => $request->theme_id,
             'question_value' => $request->question_value,
             'question_type_id' => 1,
-
-
+            'theme_id' => $request->theme_id,
         ]);
-
         $question->save();
+
+        foreach ($request->input() as $key => $value) {
+            if(strpos($key, 'option') !== false && $value != '') {
+                $status = $request->input('correct') == $key ? 1 : 0;
+                Answer::create([
+                    'content' => $value,
+                    'right' => $status,
+                    'question_id' => $question->id,
+                ]);
+            }
+        }
 
 //        foreach ($request->input() as $key => $content) {
 //            if (strpos($key, 'content') !== false && $content != '') {
@@ -120,7 +135,7 @@ class QuestionsController extends Controller
 
     public function destroy($id)
     {
-        Question::where('id', $id)->forceDelete(image_type_to_extension( cubrid_db_parameter()));
+        Question::destroy($id);
 
         Session::flash('success', 'Question deleted successfuly');
 
