@@ -56,8 +56,8 @@
                                         class="required">*</span></label>
                             <div class="col-md-6">
                                 <select class="form-control mb-md" id="inputRight" name="right" required>
-                                    <option value="1">Right</option>
                                     <option value="0">Wrong</option>
+                                    <option value="1">Right</option>
                                 </select>
                             </div>
                         </div>
