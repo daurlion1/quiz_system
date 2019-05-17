@@ -68,6 +68,11 @@ class MaterialsController extends Controller
 
 
         }
+        else{
+            $extension->move('uploads/documents',$new_extension);
+            $paths='/uploads/documents/'.$new_extension;
+            $type = 'Document';
+        }
 
         Material::create([
             'extension' => $paths,

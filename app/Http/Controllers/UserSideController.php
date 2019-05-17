@@ -8,6 +8,7 @@ use App\StudentQuiz;
 use App\StudentQuizResult;
 use App\StudentThemes;
 use App\Subject;
+use App\Quiz;
 use App\Teacher;
 use Auth;
 use Illuminate\Http\Request;
@@ -35,11 +36,12 @@ class UserSideController extends Controller
         $teacher = $subject->teachers->first()->name;
         $count = $subject->teachers->count() - 1;
         $student = Student::where('user_id', Auth::user()->id)->first();
-        $studet_quiz_id = StudentQuiz::where('student_id', $student->id)->orderBy('id','desc')->first()->id;
-        $student_themes = StudentThemes::where('student_quiz_id', $studet_quiz_id)->get();
+        $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
+        $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
+        $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
         foreach ($student_themes as $student_theme){
             if($student->character_type == 'Audial')
-            $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
+                $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
 
             else
                 $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Video')->get();
