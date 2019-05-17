@@ -103,43 +103,19 @@
                                                     <li>
                                                         <i class="fa fa-folder" aria-hidden="true"></i><span></span>
                                                             <ul>
-                                                                @if($material_theme->title == 'Video')
-                                                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                                                <li class="d-flex flex-row align-items-center justify-content-start">
                                                                         <i class="fa fa-video-camera"
-                                                                           aria-hidden="true"></i><span>Video: <a
-                                                                                    href="{{env('APP_URL').$material_theme->extension}}" target="_blank">
+                                                                           aria-hidden="true"></i><span> @if($material_theme->title == 'Video')
+                                                                                Video:
+                                                                                @elseif($material_theme->title == 'Audio') Audio:
+                                                                            @else Document:
+                                                                                <a href="{{env('APP_URL').$material_theme->extension}}" target="_blank">
                                                                                 {{$material->name}}</a></span>
                                                                         <div class="cur_time ml-auto"><i
                                                                                     class="fa fa-clock-o"
                                                                                     aria-hidden="true"></i><span></span>
                                                                         </div>
                                                                     </li>
-                                                                @else
-                                                                    <li class="d-flex flex-row align-items-center justify-content-start">
-                                                                        <i class="fa fa-volume-up"
-                                                                           aria-hidden="true"></i><span>Audio: <a
-                                                                                    href="{{env('APP_URL').$material_theme->extension}}"
-                                                                                    target="_blank">
-                                                                    {{$material->name}}</a></span>
-                                                                        <div class="cur_time ml-auto"><i
-                                                                                    class="fa fa-clock-o"
-                                                                                    aria-hidden="true"></i><span></span>
-                                                                        </div>
-                                                                    </li>
-                                                                @endif
-                                                                @if($material_theme->title == 'Document')
-                                                                    <li class="d-flex flex-row align-items-center justify-content-start">
-                                                                        <i class="fa fa-volume-up"
-                                                                           aria-hidden="true"></i><span>Reading: <a
-                                                                                    href="{{env('APP_URL').$material_theme->extension}}"
-                                                                                    target="_blank">
-                                                                    {{$material->name}}</a></span>
-                                                                        <div class="cur_time ml-auto"><i
-                                                                                    class="fa fa-clock-o"
-                                                                                    aria-hidden="true"></i><span></span>
-                                                                        </div>
-                                                                    </li>
-                                                                    @endif
                                                             </ul>
                                                     </li>
                                                     {{--<li class="d-flex flex-row align-items-center justify-content-start">--}}
