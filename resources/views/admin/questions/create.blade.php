@@ -84,27 +84,27 @@
                                 <input type="text" class="form-control" id="Option#2" name="option2" required>
                             </div>
                         </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label class="col-md-3 control-label" for="inputOption1">Option3 <span--}}
-                                        {{--class="required">*</span></label>--}}
-                            {{--<div class="col-md-6">--}}
-                                {{--<input type="text" class="form-control" id="Option#3" name="option3" required>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label class="col-md-3 control-label" for="inputOption1">Option4 <span--}}
-                                        {{--class="required">*</span></label>--}}
-                            {{--<div class="col-md-6">--}}
-                                {{--<input type="text" class="form-control" id="Option#4" name="option4" required>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label class="col-md-3 control-label" for="Option#5">Option5 <span--}}
-                                        {{--class="required">*</span></label>--}}
-                            {{--<div class="col-md-6">--}}
-                                {{--<input type="text" class="form-control" id="Option#5" name="option5" required>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option3 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#3" name="option3" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option4 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#4" name="option4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="Option#5">Option5 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#5" name="option5" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputCorrect">Correct<span

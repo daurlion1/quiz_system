@@ -21,6 +21,7 @@ Route::get('/course/{id}', 'UserSideController@course')->name('course');
 Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 'as' => 'student.quiz.store']);
 Route::get('/quiz/show/{id}', ['uses' => 'QuizzesController@show', 'as' => 'quiz.show']);
 Route::get('/admin', 'StudentQuizzesController@results')->name('home');
+Route::get('/quizzes', ['uses' => 'QuizzesController@index', 'as' => 'quizzes.index']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/departments', ['uses' => 'DepartmentsController@index', 'as' => 'departments.index']);
