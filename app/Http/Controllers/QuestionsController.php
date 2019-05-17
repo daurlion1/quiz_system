@@ -43,8 +43,6 @@ class QuestionsController extends Controller
             'question_value' => 'required|integer|between:1,5',
             'quiz_id' => 'required',
             'theme_id' => 'required',
-            'content' => 'required',
-            'right' => 'required '
 
 
         ]);

@@ -56,7 +56,7 @@
                     </li>
                     <li class="{{$request->segment(1) == 'themes' ? 'nav-active' : ''}}">
                         <a href="{{route('themes.index')}}">
-                            <i class="fa fa--circle" aria-hidden="true"></i>
+                            <i class="fa fa-file" aria-hidden="true"></i>
                             <span>Themes</span>
                         </a>
                     </li>
