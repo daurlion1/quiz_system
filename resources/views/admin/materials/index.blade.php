@@ -41,6 +41,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Material</th>
+                    <th>Name</th>
                     <th>Theme</th>
                     <th>Actions</th>
                 </tr>
@@ -49,6 +50,7 @@
                 @foreach($materials as $material)
                     <tr class="gradeX">
                         <td>{{$material->title}}</td>
+                        <td>{{$material->name}}</td>
                         <td>
                             @if($material->title == 'Video')
                             <video width="320" height="240" controls>

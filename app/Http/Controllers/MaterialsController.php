@@ -45,6 +45,7 @@ class MaterialsController extends Controller
         $this->validate($request,[
             'file' => 'required|file',
             'theme' => 'required',
+            'name' => 'required'
         ]);
 
         $paths = '';
@@ -71,6 +72,7 @@ class MaterialsController extends Controller
         Material::create([
             'extension' => $paths,
             'title' => $type,
+            'name' => $request->name,
             'theme_id' => $request->theme,
 ]);
             Session::flash('success', 'Material created successfuly');
@@ -120,10 +122,12 @@ class MaterialsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
+            'name' => 'required'
         ]);
 
         $material = Material::findOrFail($id);
         $material->title = $request->title;
+        $material->name = $request->name;
         $material->save();
 
         Session::flash('success', 'Material updated successfuly');
