@@ -50,7 +50,7 @@ class QuestionsController extends Controller
         $question = Question::create([
             'title' => $request->title,
             'quiz_id' => $request->quiz_id,
-            'theme_id' => $request->title_id,
+            'theme_id' => $request->theme_id,
             'question_value' => $request->question_value,
             'question_type_id' => 1,
 
