@@ -50,7 +50,7 @@
                     <tr class="gradeX">
                         <td>{{$answer->content}}</td>
                         <td>{{$answer->question->title}}</td>
-                        <td>@if($answer->right) Right @else Wrong</td>
+                        <td>@if($answer->right) Right @else Wrong @endif</td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
                                   action="{{route('answer.delete', ['id' => $answer->id])}}">
