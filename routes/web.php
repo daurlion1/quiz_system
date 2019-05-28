@@ -13,6 +13,10 @@
 
 Route::get('/', 'UserSideController@index')->name('index');
 Route::get('/index', 'UserSideController@index')->name('index');
+Route::get('/language/{locale}', function ($locale) {
+    \Illuminate\Support\Facades\Session::put('my_locale', $locale);
+    return redirect(url()->previous());
+})->name('language');
 
 Auth::routes();
 
@@ -20,10 +24,10 @@ Route::get('/courses', 'UserSideController@courses')->name('courses');
 Route::get('/course/{id}', 'UserSideController@course')->name('course');
 Route::post('/student/quiz/store', ['uses' => 'StudentQuizzesController@store', 'as' => 'student.quiz.store']);
 Route::get('/quiz/show/{id}', ['uses' => 'QuizzesController@show', 'as' => 'quiz.show']);
-Route::get('/admin', 'StudentQuizzesController@results')->name('home');
-Route::get('/quizzes', ['uses' => 'QuizzesController@index', 'as' => 'quizzes.index']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('/quizzes', ['uses' => 'QuizzesController@index', 'as' => 'quizzes.index']);
+    Route::get('/admin', 'StudentQuizzesController@results')->name('admin');
     Route::get('/departments', ['uses' => 'DepartmentsController@index', 'as' => 'departments.index']);
     Route::get('/department/create', ['uses' => 'DepartmentsController@create', 'as' => 'department.create']);
     Route::post('/department/store', ['uses' => 'DepartmentsController@store', 'as' => 'department.store']);
