@@ -58,41 +58,96 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputQuestionType">Question type<span
+                            <label class="col-md-3 control-label" for="inputQuestionType">Theme<span
                                         class="required">*</span></label>
                             <div class="col-md-6">
-                                <select class="form-control mb-md" id="inputQuestionType" name="question_type_id" required>
-                                    @foreach($question_types as $question_type)
-                                        <option value="{{$question_type->id}}">{{$question_type->name}}</option>
+                                <select class="form-control mb-md" id="inputThemeId" name="theme_id" required>
+                                    @foreach($themes as $theme)
+                                        <option value="{{$theme->id}}">{{$theme->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option1 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#1" name="option1" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option2 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#2" name="option2" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option3 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#3" name="option3" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputOption1">Option4 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#4" name="option4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="Option#5">Option5 <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Option#5" name="option5" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputCorrect">Correct<span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <select class="form-control mb-md" id="correct" name="correct" required>
+                                   @foreach($correct_options as $key=>$value)
+                                        <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
-                    @for($question=1;$question<=4;$question++)
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputContent">Content <span
-                                        class="required">*</span></label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="inputContent" name="{{'content_' . $question}}" required>
-                            </div>
+
+
+                        {{--@for($question=1;$question<=4;$question++)--}}
+                        {{--<div class="form-group">--}}
+
+                            {{--<label class="col-md-3 control-label" for="inputContent">Content <span--}}
+                                        {{--class="required">*</span></label>--}}
+                            {{--<div class="col-md-6">--}}
+
+                                {{--<input type="text" class="form-control" id="inputContent" name="content" required>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
 
 
 
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputRight">Right<span
-                                        class="required">*</span></label>
-                            <div class="col-md-6">
-                                <select class="form-control mb-md" id="inputRicght" name="right" required>
-                                    <option value="1">Right</option>
-                                    <option value="0">Wrong</option>
-                                </select>
-                            </div>
-                        </div>
-                        @endfor
+
+
+
+                        {{--<div class="form-group">--}}
+                            {{--<label class="col-md-3 control-label" for="inputRight">Right<span--}}
+                                        {{--class="required">*</span></label>--}}
+                            {{--<div class="col-md-6">--}}
+                                {{--<select class="form-control mb-md" id="inputRicght" name="right" required>--}}
+                                    {{--<option value="1">Right</option>--}}
+                                    {{--<option value="0">Wrong</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--@endfor--}}
                     </div>
 
 

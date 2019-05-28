@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['title','question_value','teacher_id','quiz_id','question_type_id'];
+    protected $fillable = ['title','question_value','teacher_id','quiz_id','question_type_id', 'theme_id'];
 
     public function quiz(){
         return $this->belongsTo('App\Quiz');
@@ -20,8 +20,8 @@ class Question extends Model
         return $this->hasMany('App\Answer');
     }
 
-    public function themes(){
-        return $this->belongsToMany('App\Theme');
+    public function theme(){
+        return $this->belongsTo('App\Theme');
     }
 
     public function studentQuizResults(){

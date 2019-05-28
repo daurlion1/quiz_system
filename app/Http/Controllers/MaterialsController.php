@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Material;
+use App\Subject;
+use App\Theme;
 use Illuminate\Http\Request;
 use Session;
 
@@ -25,7 +27,11 @@ class MaterialsController extends Controller
      */
     public function create()
     {
-        return view('admin.materials.create');
+        $term = array('name' =>array('Audial','Visual'));
+        $subject_id = Subject::where('isPsychological',1)->first()->id;
+        $themes = Theme::where('subject_id', '!=', $subject_id)->get();
+        return view('admin.materials.create')
+            ->with('themes', $themes);
     }
 
     /**
@@ -37,23 +43,52 @@ class MaterialsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|file',
+            'file' => 'required|file',
+            'theme' => 'required',
+            'name' => 'required'
         ]);
-        $title = $request->title;
-        $title_new_name = time().$title->getClientOriginalName();
-        $title_extension = time().$title->getClientOriginalExtension();
 
-        if($title->type)
-        $title->move('uploads/videos',$title_new_name);
-            Material::create([
-                'title' => '/uploads/videos/'.$title_new_name]);
+        $paths = '';
+        $type = '';
+
+        $extension = $request->file;
+
+        $new_extension = time().$extension->getClientOriginalName();
+
+        if($extension->getClientOriginalExtension() == 'mp4') {
+            $extension->move('uploads/videos',$new_extension);
+            $paths='/uploads/videos/'.$new_extension;
+            $type = 'Video';
+
+        }
+        else if($extension->getClientOriginalExtension() == 'mp3'){
+            $extension->move('uploads/audios',$new_extension);
+            $paths='/uploads/audios/'.$new_extension;
+            $type = 'Audio';
+
+
+        }
+        else{
+            $extension->move('uploads/documents',$new_extension);
+            $paths='/uploads/documents/'.$new_extension;
+            $type = 'Document';
+        }
+
+        Material::create([
+            'extension' => $paths,
+            'title' => $type,
+            'name' => $request->name,
+            'theme_id' => $request->theme,
+]);
+            Session::flash('success', 'Material created successfuly');
 
 
 
 
 
 
-        Session::flash('success', 'Material created successfuly');
+
+
 
         return redirect()->route('materials.index');
     }
@@ -92,10 +127,12 @@ class MaterialsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
+            'name' => 'required'
         ]);
 
         $material = Material::findOrFail($id);
         $material->title = $request->title;
+        $material->name = $request->name;
         $material->save();
 
         Session::flash('success', 'Material updated successfuly');

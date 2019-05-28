@@ -40,19 +40,32 @@
                 <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Material</th>
+                    <th>Name</th>
+                    <th>Theme</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($materials as $material)
                     <tr class="gradeX">
+                        <td>{{$material->title}}</td>
+                        <td>{{$material->name}}</td>
                         <td>
+                            @if($material->title == 'Video')
                             <video width="320" height="240" controls>
-                                <source src="{{$material->title}}" type="video/mp4">
+                                <source src="{{$material->extension}}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
+                                @elseif($material->title == 'Audio')
+                                <audio width="320" height="240" controls>
+                                    <source src="{{$material->extension}}" type="audio/mp3">
+                                    Your browser does not support the video tag.
+                                </audio>
+                                @endif
 
                         </td>
+                        <td>{{$material->theme->name}}</td>
                         <td class="actions">
                             <form id="deleteForm" method="POST"
                                   action="{{route('material.delete', ['id' => $material->id])}}">

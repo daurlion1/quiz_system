@@ -30,12 +30,6 @@
                             <span>Departments</span>
                         </a>
                     </li>
-                    <li class="{{$request->segment(1) == 'question_types' ? 'nav-active' : ''}}">
-                        <a href="{{route('question_types.index')}}">
-                            <i class="fa fa-file" aria-hidden="true"></i>
-                            <span>Question types</span>
-                        </a>
-                    </li>
                     <li class="{{$request->segment(1) == 'teachers' ? 'nav-active' : ''}}">
                         <a href="{{route('teachers.index')}}">
                             <i class="fa fa-university" aria-hidden="true"></i>
@@ -58,6 +52,12 @@
                         <a href="{{route('questions.index')}}">
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
                             <span>Questions</span>
+                        </a>
+                    </li>
+                    <li class="{{$request->segment(1) == 'themes' ? 'nav-active' : ''}}">
+                        <a href="{{route('themes.index')}}">
+                            <i class="fa fa-file" aria-hidden="true"></i>
+                            <span>Themes</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'answers' ? 'nav-active' : ''}}">

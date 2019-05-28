@@ -52,39 +52,56 @@
 
                 <!-- Course -->
                 @foreach($subjects as $subject)
-                    <div class="col-lg-4 course_col">
-                        <div class="course">
-                            <div class="course_image"><a href="{{route('userSide.course',['id' => $subject->id])}}"><img
-                                            src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
-                            <div class="course_body">
-                                <div class="course_title"><a
-                                            href="{{route('userSide.course',['id' => $subject->id])}}">{{$subject->name}}</a>
-                                </div>
-
-                                <div class="course_info">
-                                    <ul>
-                                        @if(!$subject->teachers->isEmpty())
-                                            <li><a href="instructors.html">{{$subject->teachers->first()->name}}</a>
-                                            </li>
+                    @if(!$subject->isPsychological)
+                        <div class="col-lg-4 course_col">
+                            <div class="course">
+                                <div class="course_image"><a href="{{route('course',['id' => $subject->id])}}"><img
+                                                src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
+                                <div class="course_body">
+                                    @if($student_quiz)
+                                        <div class="course_title"><a
+                                                    href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
+                                        </div>
+                                    @else
+                                        <div class="course_title"><a
+                                                    href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">{{$subject->name}}</a>
+                                        </div>
+                                    @endif
+                                    <div class="course_info">
+                                        <ul>
+                                            @if(!$subject->teachers->isEmpty())
+                                                <li><a href="instructors.html">{{$subject->teachers->first()->name}}</a>
+                                                </li>
+                                            @else
+                                                <li><a href="instructors.html">{{$subject->name}}</a>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    <div class="course_text">
+                                        @if(!$student_quiz)
+                                            <p>
+                                                <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">{{$subject->description}}</a>
+                                            </p>
                                         @else
-                                            <li><a href="instructors.html">{{$subject->name}}</a>
-                                            </li>
+                                            <p>
+                                                <a href="{{route('course',['id' => $subject->id])}}">{{$subject->description}}</a>
+                                            </p>
                                         @endif
-                                    </ul>
+
+                                    </div>
                                 </div>
-                                <div class="course_text">
-                                    <p><a href="{{route('userSide.course',['id' => $subject->id])}}">{{$subject->description}}</a></p>
+                                <div class="course_footer d-flex flex-row align-items-center justify-content-start">
+                                    <div class="course_students"><i class="fa fa-user"
+                                                                    aria-hidden="true"></i><span>10</span></div>
+                                    <div class="course_rating ml-auto"><i class="fa fa-star"
+                                                                          aria-hidden="true"></i><span>4,5</span>
+                                    </div>
+                                    <div class="course_mark course_free trans_200"><a href="#">Free</a></div>
                                 </div>
-                            </div>
-                            <div class="course_footer d-flex flex-row align-items-center justify-content-start">
-                                <div class="course_students"><i class="fa fa-user"
-                                                                aria-hidden="true"></i><span>10</span></div>
-                                <div class="course_rating ml-auto"><i class="fa fa-star" aria-hidden="true"></i><span>4,5</span>
-                                </div>
-                                <div class="course_mark course_free trans_200"><a href="#">Free</a></div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

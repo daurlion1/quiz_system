@@ -33,10 +33,32 @@
 
                         <h2 class="panel-title">Add Material</h2>
                     </header>
+
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="file" name="title" class="form-control">
+                            <label class="col-md-3 control-label" for="inputMaterial">Material <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                            <input type="file" name="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputTheme">Theme <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <select class="form-control mb-md" id="inputTheme" name="theme" required>
+                                    @foreach($themes as $theme)
+                                        <option value="{{$theme->id}}">{{$theme->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputName">Title <span
+                                        class="required">*</span></label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="inputName" name="name" required>
+                            </div>
                         </div>
                     </div>
                     <footer class="panel-footer">

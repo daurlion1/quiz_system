@@ -16,7 +16,7 @@
             <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" >
             <div class="profile-info" data-lock-name="{{Auth::user()->name}}" data-lock-email="{{Auth::user()->email}}">
                 <span class="name">{{ Auth::user()->name }}</span>
-                <span class="role">administrator</span>
+                <span class="role">@if(Auth::user()->teacher)Teacher @else Student @endif</span>
             </div>
 
             <i class="fa custom-caret"></i>

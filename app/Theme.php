@@ -16,7 +16,7 @@ class Theme extends Model
         return $this->belongsToMany('App\Question');
     }
 
-    public function materialThemes(){
-        return $this->hasMany('App\ThemeMaterial');
+    public function materials(){
+        return $this->hasMany('App\Material');
     }
 }

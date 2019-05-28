@@ -19,11 +19,11 @@ class User extends Authenticatable
     ];
 
     public function teacher(){
-        return $this->belongsTo('App\Teacher');
+        return $this->hasOne('App\Teacher');
     }
 
     public function student(){
-        return $this->belongsTo('App\Student');
+        return $this->hasOne('App\Student');
     }
 
     /**
