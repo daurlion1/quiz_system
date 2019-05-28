@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Student;
 use App\User;
+use App\Profile;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -73,6 +76,13 @@ class RegisterController extends Controller
             'character_type' => 'audial',
             'user_id' => $user->id,
         ]);
+
+            $profile = Profile::create([
+               'user_id' => $user ->id,
+                'avatar' =>'uploads/avatars/avatar-icon-png-8.jpg'
+            ]);
+
+            Session::flash('success','User created');
 
             return $user;
     }

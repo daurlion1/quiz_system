@@ -13,6 +13,7 @@
     <div id="userbox" class="userbox">
         @auth
         <a href="#" data-toggle="dropdown">
+            <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" >
             <div class="profile-info" data-lock-name="{{Auth::user()->name}}" data-lock-email="{{Auth::user()->email}}">
                 <span class="name">{{ Auth::user()->name }}</span>
                 <span class="role">@if(Auth::user()->teacher)Teacher @else Student @endif</span>
@@ -23,6 +24,11 @@
         <div class="dropdown-menu">
             <ul class="list-unstyled">
                 <li class="divider"></li>
+
+                <li >
+                    <a href="{{route('user.profile')}}"> <i class="fa fa-info"></i>  My profile</a>
+                </li>
+
                 <li>
                     <a role="menuitem" tabindex="-1" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -34,6 +40,8 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
+
+
             </ul>
         </div>
             @endauth
