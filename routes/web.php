@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,5 +102,10 @@ Route::get('/course/{id}',['uses' => 'UserSideController@course', 'as' => 'userS
 Route::get('/settings', ['uses' => 'SettingsController@index', 'as' => 'settings.index']);
 Route::get('/setting/edit/{id}', ['uses' => 'SettingsController@edit', 'as' => 'setting.edit']);
 Route::post('/setting/update/{id}', ['uses' => 'SettingsController@update', 'as' => 'setting.update']);
+
+
+Route::get('user/profile', ['uses' => 'ProfilesController@index', 'as' => 'user.profile']);
+Route::post('/user/profile/update', ['uses' => 'ProfilesController@update', 'as' => 'user.profile.update']);
+
 
 
