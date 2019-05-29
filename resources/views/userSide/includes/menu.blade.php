@@ -2,7 +2,7 @@
     <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
     <div class="search">
         <form action="#" class="header_search_form menu_mm">
-            <input type="search" class="search_input menu_mm" placeholder="Search" required="required">
+            <input type="search" class="search_input menu_mm" placeholder=@lang('userSide.search') required="required">
             <button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
                 <i class="fa fa-search menu_mm" aria-hidden="true"></i>
             </button>
@@ -10,16 +10,16 @@
     </div>
     <nav class="menu_nav">
         <ul class="menu_mm">
-            <li class="menu_mm"><a href="{{route('index')}}">Home</a></li>
-            <li class="menu_mm"><a href="{{route('courses')}}">Courses</a></li>
+            <li class="menu_mm"><a href="{{route('index')}}">@lang('tables.home')</a></li>
+            <li class="menu_mm"><a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
             {{--<li class="menu_mm"><a href="{{route('teachers')}}">Teachers</a></li>--}}
             {{--<li class="menu_mm"><a href="{{route('contacts')}}">Contact</a></li>--}}
         </ul>
     </nav>
     <div class="menu_extra">
-        <div class="menu_phone"><span class="menu_title">phone:</span>+44 300 303 0266</div>
+        <div class="menu_phone"><span class="menu_title">@lang('userSide.phone'):</span>+77077376257</div>
         <div class="menu_social">
-            <span class="menu_title">follow us</span>
+            <span class="menu_title">@lang('userSide.follow')</span>
             <ul>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
