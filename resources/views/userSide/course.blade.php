@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col">
                         <ul class="breadcrumbs_list d-flex flex-row align-items-center justify-content-start">
-                            <li><a href="{{route('index')}}">@lang('tables/home')</a></li>
+                            <li><a href="{{route('index')}}">@lang('tables.home')</a></li>
                             <li><a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
                             <li>{{$subject->name}}</li>
 
