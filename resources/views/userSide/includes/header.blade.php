@@ -78,7 +78,12 @@
 
                         <!-- Hamburger -->
                         <a href="#" data-toggle="dropdown"><div class="user">
-                                <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" class="zaebal"></div></a>
+                                @if(Auth::user())
+                                    <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" class="zaebal">
+                                    @else
+                                    <i class="fa fa-user"></i>
+                                    @endif
+                            </div></a>
                         <div class="dropdown-menu">
                             <ul class="main_nav">
                                 <li><a class="dropdown-item" href="{{route('user.profile')}}"><i class="fa fa-user"></i> @lang('userSide.my.profile')</a></li>
