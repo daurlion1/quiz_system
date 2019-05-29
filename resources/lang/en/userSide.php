@@ -21,7 +21,7 @@ return [
     'you.may.like' => 'You many like',
     'course.features' => 'Course features',
     'my.profile' => 'My Profile',
-    'pass.character.test' => 'Pass character test',
+    'pass.character.test' => 'Сharacter determination',
     'about.us' => 'About us',
     'help.support' => 'Help & Support',
     'privacy.terms' => 'Privacy & Terms',

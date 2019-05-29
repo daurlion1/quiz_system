@@ -21,7 +21,7 @@ return [
     'you.may.like' => 'Вам может понравиться',
     'course.features' => 'Курс функций',
     'my.profile' => 'Мой профиль',
-    'pass.character.test' => 'Сдать тест на характер',
+    'pass.character.test' => 'Определение характера',
     'about.us' => 'Про нас',
     'help.support' => 'Помощь и Поддержка',
     'privacy.terms' => 'Защита & Условия',

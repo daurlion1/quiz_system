@@ -10,18 +10,20 @@
 
                             <!-- Language -->
                             <div class="top_bar_lang">
-                                <span class="top_bar_title">@lang('userSide.web.language')</span>
+                                <span class="top_bar_title">@lang('userSide.web.language'):</span>
                                 <ul class="lang_list">
                                     <li class="hassubs">
                                         @if(App::getLocale()=='en')
-                                        <a href="{{route('language',['locale' => 'en'])}}">@lang('userSide.en')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                        <a href="{{route('language',['locale' => 'en'])}}"><img src="{{asset('userSide/images/English.svg')}}" width="32px" height="28px"> @lang('userSide.en')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                         <ul>
-                                            <li><a href="{{route('language',['locale' => 'ru'])}}">@lang('userSide.ru')</a></li>
+                                            <li><a href="{{route('language',['locale' => 'ru'])}}"> <img src="{{asset('userSide/images/Russian.svg')}}" width="32" height="28"> @lang('userSide.ru')</a></li>
                                         </ul>
                                             @else
-                                            <a href="{{route('language',['locale' => 'ru'])}}">@lang('userSide.ru')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <a href="{{route('language',['locale' => 'ru'])}}">
+                                                <img src="{{asset('userSide/images/Russian.svg')}}" width="32px" height="28px">
+                                                @lang('userSide.ru')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul>
-                                                <li><a href="{{route('language',['locale' => 'en'])}}">@lang('userSide.en')</a></li>
+                                                <li><a href="{{route('language',['locale' => 'en'])}}"><img src="{{asset('userSide/images/English.svg')}}" width="32px" height="28px"> @lang('userSide.en')</a></li>
                                             </ul>
                                             @endif
                                     </li>
@@ -88,7 +90,7 @@
                             <ul class="main_nav">
                                 <li><a class="dropdown-item" href="{{route('user.profile')}}"><i class="fa fa-user"></i> @lang('userSide.my.profile')</a></li>
                                 <li><a class="dropdown-item" href="#">
-                                        <i class="fa fa-check"></i> Pass character test</a></li>
+                                        <i class="fa fa-check"></i> @lang('userSide.pass.character.test')</a></li>
                                 <li>@if(!Auth::user())
                                         <a class="dropdown-item" href="{{route('login')}}"><i class="fa fa-sign-in"></i> @lang('actions.login')</a>
                                     @else

@@ -14,7 +14,7 @@
                 <div>
                     <div class="footer_title">@lang('userSide.about.us')</div>
                     <ul class="footer_list">
-                        <li><a href="#">@lang('userSide.Courses')</a></li>
+                        <li><a href="#">@lang('userSide.courses')</a></li>
                     </ul>
                 </div>
             </div>
