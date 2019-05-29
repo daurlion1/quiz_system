@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col text-center">
                         <h1 class="home_title">@lang('userSide.main.sentence')</h1>
-                        <div class="home_button trans_200"><a href= "{{env('APP_URL').'userSide/main_video.mp4'}}" target="_blank">@lang('userSide.start')</a></div>
+                        <div class="home_button trans_200"><a href= "{{env('APP_URL').'/userSide/main_video.mp4'}}" target="_blank">@lang('userSide.start')</a></div>
                     </div>
                 </div>
             </div>
