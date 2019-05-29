@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <header class="page-header">
-        <h2>Departments Table</h2>
+        <h2>@lang('tables.departments')</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -10,8 +10,8 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Departments</span></li>
-                <li><span>Table</span></li>
+                <li><span>@lang('tables.departments')</span></li>
+                <li><span>@lang('tables.table')</span></li>
             </ol>
 
             <a class="sidebar-right-toggle"></a>
@@ -26,13 +26,13 @@
                 <a href="#" class="fa fa-times"></a>
             </div>
 
-            <h2 class="panel-title">Departments</h2>
+            <h2 class="panel-title">@lang('tables.departments')</h2>
         </header>
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="mb-md">
-                        <a href="{{route('department.create')}}" id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></a>
+                        <a href="{{route('department.create')}}" id="addToTable" class="btn btn-primary">@lang('actions.add') <i class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>

@@ -13,14 +13,14 @@ class AddColumnThemeIdMaterialTitle extends Migration
      */
     public function up()
     {
-//        Schema::table('questions', function (Blueprint $table) {
-//            $table->integer('theme_id')->after('question_type_id')->unsigned();
-//            $table->foreign('theme_id')->references('id')->on('themes');
-//        });
-
-        Schema::table('materials', function (Blueprint $table) {
-            $table->string('name')->after('title');
+        Schema::table('questions', function (Blueprint $table) {
+            $table->integer('theme_id')->after('question_type_id')->unsigned();
+            $table->foreign('theme_id')->references('id')->on('themes');
         });
+
+//        Schema::table('materials', function (Blueprint $table) {
+//            $table->string('name')->after('title');
+//        });
     }
 
     /**

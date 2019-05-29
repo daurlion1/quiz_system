@@ -2,7 +2,7 @@
 @section('content')
     @include('admin.includes.error')
     <header class="page-header">
-        <h2>Edit Answer</h2>
+        <h2>@lang('actions.edit') Answer</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">

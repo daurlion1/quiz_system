@@ -12,6 +12,7 @@
 
 Route::get('/', 'UserSideController@index')->name('index');
 Route::get('/index', 'UserSideController@index')->name('index');
+Route::get('/teachers', 'UserSideController@teachers')->name('teachers.userSide');
 Route::get('/language/{locale}', function ($locale) {
     \Illuminate\Support\Facades\Session::put('my_locale', $locale);
     return redirect(url()->previous());
@@ -26,7 +27,7 @@ Route::get('/quiz/show/{id}', ['uses' => 'QuizzesController@show', 'as' => 'quiz
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/quizzes', ['uses' => 'QuizzesController@index', 'as' => 'quizzes.index']);
-    Route::get('/admin', 'StudentQuizzesController@results')->name('admin');
+    Route::get('/admin', 'StudentQuizzesController@results')->name('home');
     Route::get('/departments', ['uses' => 'DepartmentsController@index', 'as' => 'departments.index']);
     Route::get('/department/create', ['uses' => 'DepartmentsController@create', 'as' => 'department.create']);
     Route::post('/department/store', ['uses' => 'DepartmentsController@store', 'as' => 'department.store']);

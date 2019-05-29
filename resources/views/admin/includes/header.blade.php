@@ -13,7 +13,7 @@
     <div id="userbox" class="userbox">
         @auth
         <a href="#" data-toggle="dropdown">
-            <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" >
+            <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" class="img-circle" >
             <div class="profile-info" data-lock-name="{{Auth::user()->name}}" data-lock-email="{{Auth::user()->email}}">
                 <span class="name">{{ Auth::user()->name }}</span>
                 <span class="role">@if(Auth::user()->teacher)Teacher @else Student @endif</span>
@@ -26,7 +26,7 @@
                 <li class="divider"></li>
 
                 <li >
-                    <a href="{{route('user.profile')}}"> <i class="fa fa-info"></i>  My profile</a>
+                    <a href="{{route('user.profile')}}"> <i class="fa fa-user"></i>  My profile</a>
                 </li>
 
                 <li>

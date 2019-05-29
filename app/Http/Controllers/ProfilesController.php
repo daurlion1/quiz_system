@@ -84,29 +84,20 @@ class ProfilesController extends Controller
         if($request->hasFile('avatar'))
         {
             $avatar =$request -> avatar;
-
             $avatar_new_name = time().$avatar->getClientOriginalName();
-
             $avatar ->move('uploads/avatars', $avatar_new_name);
-
             $user -> profile -> avatar = 'uploads/avatars/'.$avatar_new_name;
-
             $user -> profile ->save();
         }
 
-
-
         $user -> name = $request -> name;
-
         $user -> profile -> surname = $request -> surname;
-
         $user -> save();
-
         $user -> profile ->save();
 
         Session::flash('success', 'Account profile updated');
 
-        return redirect() -> back();
+        return redirect()->route('index');
     }
 
     /**

@@ -5,26 +5,32 @@
             <div class="row">
                 <div class="col">
                     <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                        <div class="top_bar_phone"><span class="top_bar_title">phone:</span>+7077376257</div>
+                        <div class="top_bar_phone"><span class="top_bar_title">@lang('userSide.phone'):</span>+7077376257</div>
                         <div class="top_bar_right ml-auto">
 
                             <!-- Language -->
                             <div class="top_bar_lang">
-                                <span class="top_bar_title">site language:</span>
+                                <span class="top_bar_title">@lang('userSide.web.language')</span>
                                 <ul class="lang_list">
                                     <li class="hassubs">
-                                        <a href="#">English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                        @if(App::getLocale()=='en')
+                                        <a href="{{route('language',['locale' => 'en'])}}">@lang('userSide.en')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                         <ul>
-                                            <li><a href="#">Russian</a></li>
-                                            <li><a href="#">Kazakh</a></li>
+                                            <li><a href="{{route('language',['locale' => 'ru'])}}">@lang('userSide.ru')</a></li>
                                         </ul>
+                                            @else
+                                            <a href="{{route('language',['locale' => 'ru'])}}">@lang('userSide.ru')<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <ul>
+                                                <li><a href="{{route('language',['locale' => 'en'])}}">@lang('userSide.en')</a></li>
+                                            </ul>
+                                            @endif
                                     </li>
                                 </ul>
                             </div>
 
                             <!-- Social -->
                             <div class="top_bar_social">
-                                <span class="top_bar_title social_title">follow us</span>
+                                <span class="top_bar_title social_title">@lang('userSide.follow')</span>
                                 <ul>
                                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -52,9 +58,9 @@
                     </div>
                     <nav class="main_nav_contaner">
                         <ul class="main_nav">
-                            <li><a href="{{route('index')}}">Home</a></li>
-                            <li><a href="{{route('courses')}}">Courses</a></li>
-                            {{--<li><a href="{{route('teachers')}}">Teachers</a></li>--}}
+                            <li><a href="{{route('index')}}">@lang('tables.home')</a></li>
+                            <li><a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
+                            <li><a href="{{route('teachers.userSide')}}">@lang('tables.teachers')</a></li>
                             {{--<li><a href="{{route('contacts')}}">Contact</a></li>--}}
                         </ul>
                     </nav>
@@ -62,7 +68,7 @@
                         <div class="header_search">
                             <div class="search_form_container">
                                 <form action="#" id="search_form" class="search_form trans_400">
-                                    <input type="search" class="header_search_input trans_400" placeholder="Type for Search" required="required">
+                                    <input type="search" class="header_search_input trans_400" placeholder=@lang('userSide.search') required="required">
                                     <div class="search_button">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </div>
@@ -71,8 +77,26 @@
                         </div>
 
                         <!-- Hamburger -->
-
-                        <a href="{{route('login')}}"><div class="user"><i class="fa fa-user" aria-hidden="true"></i></div></a>
+                        <a href="#" data-toggle="dropdown"><div class="user">
+                                <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="48px" height="44px" class="zaebal"></div></a>
+                        <div class="dropdown-menu">
+                            <ul class="main_nav">
+                                <li><a class="dropdown-item" href="{{route('user.profile')}}"><i class="fa fa-user"></i> @lang('userSide.my.profile')</a></li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="fa fa-check"></i> Pass character test</a></li>
+                                <li>@if(!Auth::user())
+                                        <a class="dropdown-item" href="{{route('login')}}"><i class="fa fa-sign-in"></i> @lang('actions.login')</a>
+                                    @else
+                                        <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-power-off"></i> @lang('actions.logout')</a>
+                                    @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="hamburger menu_mm">
                             <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                         </div>

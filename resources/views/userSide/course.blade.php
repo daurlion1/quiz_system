@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col">
                         <ul class="breadcrumbs_list d-flex flex-row align-items-center justify-content-start">
-                            <li><a href="{{route('index')}}">Home</a></li>
-                            <li><a href="{{route('courses')}}">Courses</a></li>
+                            <li><a href="{{route('index')}}">@lang('tables/home')</a></li>
+                            <li><a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
                             <li>{{$subject->name}}</li>
 
                         </ul>
@@ -60,7 +60,7 @@
                                 <div class="row">
                                     <div class="col-lg-9">
                                         <div class="tabs d-flex flex-row align-items-center justify-content-start">
-                                            <div class="tab active">description</div>
+                                            <div class="tab active">@lang('userSide.description')</div>
                                             <div class="tab">curriculum</div>
                                             <div class="tab">reviews</div>
                                             <div class="tab">members</div>
@@ -93,39 +93,46 @@
                                             <div class="cur_title">Week {{$i++}}</div>
                                             <div class="cur_num ml-auto">{{$i-1}}/{{count($materials)}}</div>
                                         </div>
-                                        @foreach($material as $material_theme)
                                         <div class="cur_item_content">
-                                            <div class="cur_item_title">{{$material_theme->theme->name}}</div>
+                                            <div class="cur_item_title"></div>
                                             <div class="cur_item_text">
                                             </div>
                                             <div class="cur_contents">
                                                 <ul>
                                                     <li>
                                                         <i class="fa fa-folder" aria-hidden="true"></i><span></span>
-                                                            <ul>
+                                                        <ul>
+                                                            @foreach($material as $material_theme)
+
                                                                 <li class="d-flex flex-row align-items-center justify-content-start">
-                                                                        <i class="fa fa-video-camera"
-                                                                           aria-hidden="true"></i><span> @if($material_theme->title == 'Video')
-                                                                                Video:
-                                                                                @elseif($material_theme->title == 'Audio') Audio:
-                                                                            @else Document:
+                                                                    <i class="fa fa-video-camera"
+                                                                       aria-hidden="true"></i><span> @if($material_theme->title == 'Video')
+                                                                            Video:
+                                                                        @elseif($material_theme->title == 'Audio') Audio:
+                                                                        @else Document:
+
+                                                                        @endif
                                                                                 <a href="{{env('APP_URL').$material_theme->extension}}" target="_blank">
-                                                                                {{$material->name}}</a></span>
-                                                                        <div class="cur_time ml-auto"><i
-                                                                                    class="fa fa-clock-o"
-                                                                                    aria-hidden="true"></i><span></span>
-                                                                        </div>
-                                                                    </li>
-                                                            </ul>
+                                                                                {{$material_theme->name}}</a></span>
+                                                                    <div class="cur_time ml-auto"><i
+                                                                                class="fa fa-clock-o"
+                                                                                aria-hidden="true"></i><span></span>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+
+
+                                                        </ul>
+
+
                                                     </li>
                                                     {{--<li class="d-flex flex-row align-items-center justify-content-start">--}}
-                                                        {{--<i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Graded: Cumulative Language Quiz</span>--}}
-                                                        {{--<div class="cur_time ml-auto"><span>3 Questions</span></div>--}}
+                                                    {{--<i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Graded: Cumulative Language Quiz</span>--}}
+                                                    {{--<div class="cur_time ml-auto"><span>3 Questions</span></div>--}}
                                                     {{--</li>--}}
                                                 </ul>
                                             </div>
                                         </div>
-                                        @endforeach
 
                                     </div>
                                 @endforeach

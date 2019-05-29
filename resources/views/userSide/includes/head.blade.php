@@ -9,4 +9,10 @@
 <link rel="stylesheet" type="text/css" href="{{asset('userSide/plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('userSide/plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link href="{{asset('userSide/plugins/video-js/video-js.css')}}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+<style>
+    .zaebal{
+        border-radius:50%;
+    }
+</style>
 @yield('styles')

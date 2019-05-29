@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col">
                         <ul class="breadcrumbs_list d-flex flex-row align-items-center justify-content-start">
-                            <li><a href="{{route('index')}}">Home</a></li>
-                            <li><a href="{{route('courses')}}">Courses</a></li>
+                            <li><a href="{{route('index')}}">@lang('tables.home')</a></li>
+                            <li><a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
 
                         </ul>
                     </div>
@@ -15,37 +15,37 @@
             </div>
         </div>
     </div>
-    <div class="language">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="language_title">Learn Languages Easily</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="language_slider_container">
+    {{--<div class="language">--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col">--}}
+                    {{--<div class="language_title">Learn Languages Easily</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<div class="col">--}}
+                    {{--<div class="language_slider_container">--}}
 
-                        <!-- Language Slider -->
+                        {{--<!-- Language Slider -->--}}
 
-                        <div class="owl-carousel owl-theme language_slider">
+                        {{--<div class="owl-carousel owl-theme language_slider">--}}
 
-                            <!-- Flag -->
-                            <div class="owl-item language_item">
-                                <a href="#">
-                                    <div class="flag"><img src="{{asset('userSide/images/English.svg')}}" alt=""></div>
-                                    <div class="lang_name">English</div>
-                                </a>
-                            </div>
-                        </div>
+                            {{--<!-- Flag -->--}}
+                            {{--<div class="owl-item language_item">--}}
+                                {{--<a href="#">--}}
+                                    {{--<div class="flag"><img src="{{asset('userSide/images/English.svg')}}" alt=""></div>--}}
+                                    {{--<div class="lang_name">English</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <div class="lang_nav lang_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                        <div class="lang_nav lang_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        {{--<div class="lang_nav lang_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>--}}
+                        {{--<div class="lang_nav lang_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <div class="courses">
         <div class="container">
             <div class="row courses_row">
@@ -58,15 +58,14 @@
                                 <div class="course_image"><a href="{{route('course',['id' => $subject->id])}}"><img
                                                 src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
                                 <div class="course_body">
-                                    @if($student_quiz)
-                                        <div class="course_title"><a
-                                                    href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
-                                        </div>
-                                    @else
-                                        <div class="course_title"><a
-                                                    href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">{{$subject->name}}</a>
-                                        </div>
-                                    @endif
+                                    <div class="course_title">
+                                        @if(!$student_quiz)
+                                            <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">
+                                                {{$subject->name}}</a>
+                                        @else
+                                            <a href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
+                                        @endif
+                                    </div>
                                     <div class="course_info">
                                         <ul>
                                             @if(!$subject->teachers->isEmpty())
@@ -79,16 +78,14 @@
                                         </ul>
                                     </div>
                                     <div class="course_text">
-                                        @if(!$student_quiz)
-                                            <p>
-                                                <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">{{$subject->description}}</a>
-                                            </p>
-                                        @else
-                                            <p>
+                                        <p>
+                                            @if(!$student_quiz)
+                                                <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">
+                                                    {{$subject->description}}</a>
+                                            @else
                                                 <a href="{{route('course',['id' => $subject->id])}}">{{$subject->description}}</a>
-                                            </p>
-                                        @endif
-
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="course_footer d-flex flex-row align-items-center justify-content-start">

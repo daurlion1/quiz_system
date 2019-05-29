@@ -15,68 +15,68 @@
                     <li class="{{ $request->segment(1) == 'home' ? 'nav-active' : '' }}">
                         <a href="{{route('home')}}">
                             <i class="fa fa-home" aria-hidden="true"></i>
-                            <span>Home</span>
+                            <span>@lang('tables.home')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'materials' ? 'nav-active' : ''}}">
                         <a href="{{route('materials.index')}}">
                             <i class="fa fa-book" aria-hidden="true"></i>
-                            <span>Materials</span>
+                            <span>@lang('tables.materials')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'departments' ? 'nav-active' : ''}}">
                         <a href="{{route('departments.index')}}">
                             <i class="fa fa-building-o" aria-hidden="true"></i>
-                            <span>Departments</span>
+                            <span>@lang('tables.departments')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'teachers' ? 'nav-active' : ''}}">
                         <a href="{{route('teachers.index')}}">
                             <i class="fa fa-university" aria-hidden="true"></i>
-                            <span>Teachers</span>
+                            <span>@lang('tables.teachers')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'subjects' ? 'nav-active' : ''}}">
                         <a href="{{route('subjects.index')}}">
                             <i class="fa fa-language" aria-hidden="true"></i>
-                            <span>Subjects</span>
+                            <span>@lang('tables.subjects')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'quizzes' ? 'nav-active' : ''}}">
                         <a href="{{route('quizzes.index')}}">
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
-                            <span>Quizzes</span>
+                            <span>@lang('tables.quizzes')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'questions' ? 'nav-active' : ''}}">
                         <a href="{{route('questions.index')}}">
                             <i class="fa fa-question-circle" aria-hidden="true"></i>
-                            <span>Questions</span>
+                            <span>@lang('tables.questions')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'themes' ? 'nav-active' : ''}}">
                         <a href="{{route('themes.index')}}">
                             <i class="fa fa-file" aria-hidden="true"></i>
-                            <span>Themes</span>
+                            <span>@lang('tables.themes')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'answers' ? 'nav-active' : ''}}">
                         <a href="{{route('answers.index')}}">
                             <i class="fa fa-reply" aria-hidden="true"></i>
-                            <span>Answers</span>
+                            <span>@lang('tables.answers')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'settings' ? 'nav-active' : ''}}">
                         <a href="{{route('settings.index')}}">
                             <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                             <span class="sr-only">Loading...</span>
-                            <span>Settings</span>
+                            <span>@lang('tables.settings')</span>
                         </a>
                     </li>
                     <li class="{{$request->segment(1) == 'results' ? 'nav-active' : ''}}">
                         <a href="{{route('student.quizzes')}}">
                             <i class="fa fa-check " aria-hidden="true"></i>
-                            <span>Test Results</span>
+                            <span>@lang('tables.test.results')</span>
                         </a>
                     </li>
                     {{--<li class="{{$request->segment(1) == 'asd' ? 'nav-active' : ''}}">--}}
