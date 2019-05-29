@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 class UserSideController extends Controller
 {
     public function courses(){
+        if(Auth::user()){
         $student = Student::where('user_id', Auth::user()->id)->first();
         $student_quiz = null;
         if(Auth::user()->student){
@@ -25,10 +26,15 @@ class UserSideController extends Controller
         if($student_quiz) $check = true;
         else $check = false;
         return view('userSide.courses')->with('subjects', Subject::all())
-            ->with('student_quiz', $check);
+            ->with('student_quiz', $check);}
+        else {
+            Session::flash('info', 'First u must login');
+            return redirect()->back();
+        }
     }
 
     public function index(){
+
         return view('userSide.index')->with('subjects', Subject::where('isPsychological',0)->get())
             ->with('teachers', Teacher::all());
     }

@@ -20,7 +20,7 @@ class ProfilesController extends Controller
     public function index()
     {
         if(!Auth::user()){
-            Session::flash('warning', 'You first must login!');
+            Session::flash('info', 'You first must login!');
             return redirect()->back();
         }
         return view('admin.users.profile') -> with('user', Auth());

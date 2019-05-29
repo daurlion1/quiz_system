@@ -90,7 +90,7 @@
                         <div class="dropdown-menu">
                             <ul class="main_nav">
                                 <li><a class="dropdown-item" href="{{route('user.profile')}}"><i class="fa fa-user"></i> @lang('userSide.my.profile')</a></li>
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="{{route('quiz.show', ['id' => 2])}}">
                                         <i class="fa fa-check"></i> @lang('userSide.pass.character.test')</a></li>
                                 <li>@if(!Auth::user())
                                         <a class="dropdown-item" href="{{route('login')}}"><i class="fa fa-sign-in"></i> @lang('actions.login')</a>
