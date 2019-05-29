@@ -16,9 +16,9 @@
                                 <input type="hidden" name="questions[{{$i}}]" value="{{$question->id}}">
                                 @foreach($question->answers as $answer)
                                     <div class="radio-custom">
-                                        <input type="radio" id="{{$answer->content}}" name="answers[{{$question->id}}]"
+                                        <input type="radio" id="{{$answer->content.$answer->id}}" name="answers[{{$question->id}}]"
                                                value="{{$answer->id}}">
-                                        <label for="{{$answer->content}}">{{$answer->content}}</label>
+                                        <label for="{{$answer->content.$answer->id}}">{{$answer->content}}</label>
                                     </div>
                                 @endforeach
                                 <?php $i++ ?>
