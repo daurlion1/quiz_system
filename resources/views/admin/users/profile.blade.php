@@ -31,10 +31,10 @@
             </div>
             <div class="form-group mb-lg">
                 <label for="inputName">Your avatar</label>
-                    <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="500" height="350px" >
+                    <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="400" height="250px">
             </div>
             <div class="col-sm-4 text-right">
-                <button type="submit" class="btn btn-primary hidden-xs">Edit Profile</button>
+                <button type="submit" class="btn btn-primary">Edit Profile</button>
             </div>
         </form>
     </div>

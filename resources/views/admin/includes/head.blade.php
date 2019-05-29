@@ -1,6 +1,7 @@
 <meta charset="UTF-8">
 
 <title>Quiz-Admin</title>
+<link rel="icon" href="{{asset('assets/images/logo.png')}}" sizes="32x32">
 <meta name="keywords" content="HTML5 Admin Template" />
 <meta name="description" content="Porto Admin - Responsive HTML5 Template">
 <meta name="author" content="okler.net">

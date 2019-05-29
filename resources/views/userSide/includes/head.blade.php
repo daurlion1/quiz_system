@@ -1,4 +1,5 @@
-<title>Blog</title>
+<title>ELT</title>
+<link rel="icon" href="{{asset('assets/images/logo.png')}}" sizes="32x32">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Lingua project">

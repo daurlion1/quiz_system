@@ -55,7 +55,8 @@
                 <div class="header_content d-flex flex-row align-items-center justify-content-start">
                     <div class="logo_container mr-auto">
                         <a href="#">
-                            <div class="logo_text">ELT</div>
+                            <div class="logo_text"><img src="{{asset('assets/images/logo.png')}}" width="50px" height="44px">
+                                </div>
                         </a>
                     </div>
                     <nav class="main_nav_contaner">
