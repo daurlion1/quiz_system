@@ -20,8 +20,8 @@
                 </a></li>
             <li class="menu_mm"><i class="fa fa-home"></i> <a href="{{route('index')}}">@lang('tables.home')</a></li>
             <li class="menu_mm"><i class="fa fa-book"></i> <a href="{{route('courses')}}">@lang('userSide.courses')</a></li>
-            <li class="menu_mm"><i class="fa fa-institution"></i> <a href="{{route('teachers.index')}}">@lang('tables.teachers')</a></li>
-            <li class="menu_mm"><a href="#">
+            <li class="menu_mm"><i class="fa fa-institution"></i> <a href="{{route('teachers.userSide')}}">@lang('tables.teachers')</a></li>
+            <li class="menu_mm"><a href="{{route('quiz.show', ['id' => 2])}}">
                     <i class="fa fa-check"></i> @lang('userSide.pass.character.test')</a></li>
             <li class="menu_mm">@if(!Auth::user())
                     <a href="{{route('login')}}"><i class="fa fa-sign-in"></i> @lang('actions.login')</a>
