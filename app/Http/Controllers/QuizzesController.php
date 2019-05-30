@@ -74,6 +74,7 @@ class QuizzesController extends Controller
      */
     public function show($id)
     {
+        if(Auth::user()){
         if(Auth::user()->student) {
             $i = 1;
             $questions = array();
@@ -102,6 +103,8 @@ class QuizzesController extends Controller
             Session::flash('info', 'You are not student');
             return redirect()->back();
         }
+        }
+
     }
 
     /**
