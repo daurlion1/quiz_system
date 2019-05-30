@@ -104,6 +104,10 @@ class QuizzesController extends Controller
             return redirect()->back();
         }
         }
+        else{
+            Session::flash('info', 'You are not authorized');
+            return redirect()->back();
+        }
 
     }
 
