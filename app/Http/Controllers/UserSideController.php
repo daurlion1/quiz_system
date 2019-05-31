@@ -77,7 +77,7 @@ class UserSideController extends Controller
             }
 
             return view('userSide.course')
-                ->with(compact('subject', 'subjects', 'materials', 'i', 'teacher', 'count','student'));}
+                ->with(compact('subject', 'quiz_id', 'materials', 'i', 'teacher', 'count','student'));}
 
     }
 

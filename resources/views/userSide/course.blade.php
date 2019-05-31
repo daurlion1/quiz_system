@@ -281,7 +281,7 @@
                 <div class="col-lg-3">
                     <div class="sidebar">
                         <div class="sidebar_background"></div>
-                        <div class="sidebar_top"><a href="#">buy course</a></div>
+                        <div class="sidebar_top"><a href="{{route('quiz.show', ['id' => $quiz_id])}}">Go to test</a></div>
                         <div class="sidebar_content">
 
                             <!-- Features -->
