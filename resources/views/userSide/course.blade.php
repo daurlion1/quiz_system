@@ -30,7 +30,7 @@
                             <div class="intro_price">Free</div>
                             <div class="intro_title">{{$subject->name}}</div>
                             <div class="intro_meta">
-                                <div class="intro_image"><img src="{{asset($subject->teacher->first()->user->profile->avatar)}}" alt="">
+                                <div class="intro_image"><img src="{{asset($teacher->user->profile->avatar)}}" alt="">
                                 </div>
                                 <div class="intro_instructors">{{$teacher}}</a> and <span>{{$count}} other instructors</span></div>
                             </div>
