@@ -61,16 +61,18 @@ class UserSideController extends Controller
                 if($student->character_type == 'Audial')
 //                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
                 $materials[] = DB::table('materials')
-                    ->join('themes', 'materials.theme_id', '=',  'themes.'.$student_theme->theme->id)
+                    ->join('themes', 'materials.theme_id', '=',  'themes.id')
                     ->where('materials.title', '=', 'Audio')
+                    ->where('themes.id', '=', $student_theme->theme->id)
                     ->orderBy($student_theme->theme->order, 'asc')
                     ->get();
 
                 else
 //                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Video')->get();
                 $materials[] = DB::table('materials')
-                    ->join('themes', 'materials.theme_id', '=', 'themes.'.$student_theme->theme->id)
+                    ->join('themes', 'materials.theme_id', '=', 'themes.id')
                     ->where('materials.title', '=', 'Video')
+                    ->where('themes.id', '=', $student_theme->theme->id)
                     ->orderBy($student_theme->theme->order, 'asc')
                     ->get();
             }
