@@ -30,7 +30,7 @@
                             <div class="intro_price">Free</div>
                             <div class="intro_title">{{$subject->name}}</div>
                             <div class="intro_meta">
-                                <div class="intro_image"><img src="{{asset($subject->teachers->first()->user->profile->avatar)}}" alt="">
+                                <div class="intro_image"><img src="{{asset($subject->teachers->first()->user->profile->avatar)}}" width="48px" height="44px" alt="">
                                 </div>
                                 <div class="intro_instructors">{{$teacher}} and <span>{{$count}} other instructors</span></div>
                             </div>
@@ -148,7 +148,8 @@
                                 @foreach($subject->teachers as $steacher)
                                     <div class="member">
                                         <div class="member_image"><img src="{{asset($steacher->user->profile->avatar)}}"
-                                                                       alt=""></div>
+                                                                       alt=""  width="48px" height="44px" alt="">
+                                        </div>></div>
                                         <div class="member_title"><a href="#">{{$steacher->name}}</a></div>
                                     </div>
                                 @endforeach
