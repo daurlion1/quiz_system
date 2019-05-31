@@ -54,27 +54,26 @@ class UserSideController extends Controller
             $student = Student::where('user_id', Auth::user()->id)->first();
             $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
             $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
-            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
+//            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
+            DB::table('student_themes')
+                ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
+                ->where('student_quiz_id', $student_quiz_id)
+                ->orderBy('themes.order', 'asc')
+                ->get();
             if(Auth::user()->profile->show_themes == 1)
-                $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->where('show', 0)->get();
+//                $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->where('show', 0)->get();
+            $student_themes = DB::table('student_themes')
+                ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
+                ->where('student_quiz_id', $student_quiz_id)
+                ->where('show', 0)
+                ->orderBy('themes.order', 'asc')
+                ->get();
             foreach ($student_themes as $student_theme){
                 if($student->character_type == 'Audial')
-//                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
-                $materials[] = DB::table('materials')
-                    ->join('themes', 'materials.theme_id', '=',  'themes.id')
-                    ->where('materials.title', '=', 'Audio')
-                    ->where('themes.id', '=', $student_theme->theme->id)
-                    ->orderBy('themes.order', 'asc')
-                    ->get();
+                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
 
                 else
-//                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Video')->get();
-                $materials[] = DB::table('materials')
-                    ->join('themes', 'materials.theme_id', '=', 'themes.id')
-                    ->where('materials.title', '=', 'Video')
-                    ->where('themes.id', '=', $student_theme->theme->id)
-                    ->orderBy('themes.order', 'asc')
-                    ->get();
+                    $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Video')->get();
             }
 
             return view('userSide.course')
