@@ -60,6 +60,7 @@
                                         <div class="tabs d-flex flex-row align-items-center justify-content-start">
                                             <div class="tab active">@lang('userSide.description')</div>
                                             <div class="tab">curriculum</div>
+                                            <div class="tab">reviews</div>
                                             <div class="tab">members</div>
                                         </div>
                                     </div>
@@ -148,7 +149,7 @@
                                 @foreach($subject->teachers as $steacher)
                                     <div class="member">
                                         <div class="member_image"><img src="{{asset($steacher->user->profile->avatar)}}"
-                                                                       alt=""  width="80px" height="76px" alt="" class="zaebal">
+                                                                       alt=""  width="75px" height="71px" alt="" class="zaebal">
                                         </div></div>
                                         <div class="member_title"><a href="#">{{$steacher->name}}</a></div>
                                     </div>
