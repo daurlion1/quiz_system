@@ -64,7 +64,7 @@ class UserSideController extends Controller
                     ->join('themes', 'materials.theme_id', '=',  'themes.id')
                     ->where('materials.title', '=', 'Audio')
                     ->where('themes.id', '=', $student_theme->theme->id)
-                    ->orderBy($student_theme->theme->order, 'asc')
+                    ->orderBy('themes.order', 'asc')
                     ->get();
 
                 else
@@ -73,7 +73,7 @@ class UserSideController extends Controller
                     ->join('themes', 'materials.theme_id', '=', 'themes.id')
                     ->where('materials.title', '=', 'Video')
                     ->where('themes.id', '=', $student_theme->theme->id)
-                    ->orderBy($student_theme->theme->order, 'asc')
+                    ->orderBy('themes.order', 'asc')
                     ->get();
             }
 
