@@ -21,14 +21,13 @@
 
     <div class="intro">
         <div class="intro_background parallax-window" data-parallax="scroll"
-             data-image-src="{{asset('userSide/images/course_image.jpg')}}" data-speed="0.8"></div>
+             data-image-src="{{asset('userSide/images/course_5.jpg')}}" data-speed="0.8"></div>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="intro_container d-flex flex-column align-items-start justify-content-end">
                         <div class="intro_content">
                             <div class="intro_price">Free</div>
-                            <div class="rating_r rating_r_4 intro_rating"><i></i><i></i><i></i><i></i><i></i></div>
                             <div class="intro_title">{{$subject->name}}</div>
                             <div class="intro_meta">
                                 <div class="intro_image"><img src="{{asset('userSide/images/intro_user.jpg')}}" alt="">
@@ -61,7 +60,6 @@
                                         <div class="tabs d-flex flex-row align-items-center justify-content-start">
                                             <div class="tab active">@lang('userSide.description')</div>
                                             <div class="tab">curriculum</div>
-                                            <div class="tab">reviews</div>
                                             <div class="tab">members</div>
                                         </div>
                                     </div>
