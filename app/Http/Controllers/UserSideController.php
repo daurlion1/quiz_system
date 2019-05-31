@@ -70,10 +70,10 @@ class UserSideController extends Controller
                 ->get();
             foreach ($student_themes as $student_theme){
                 if($student->character_type == 'Audial')
-                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', 'Audio')->get();
+                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Video')->get();
 
                 else
-                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', 'Video')->get();
+                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Audio')->get();
             }
 
             return view('userSide.course')
