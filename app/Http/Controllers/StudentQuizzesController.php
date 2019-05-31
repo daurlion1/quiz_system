@@ -107,12 +107,12 @@ class StudentQuizzesController extends Controller
                     $result_question_values2[$item['theme']] = $item['question_value'];
                 }
             }
-            $show = 0;
             foreach ($result_question_values2 as $key=>$value) {
                 $check[$key] = true;
                 $check1[$key] = $value;
             }
                 foreach ($result_question_values as $key=>$value) {
+                    $show = 0;
                     if(isset($check[$key])){
                     if($key==$check[$key]) {
                         $amount_percent =  $check1[$key]/$result_question_values[$key] * 100;

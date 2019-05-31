@@ -73,13 +73,14 @@ class RegisterController extends Controller
         ]);
 
             Student::create([
-            'character_type' => 'audial',
+            'character_type' => 'Audial',
             'user_id' => $user->id,
         ]);
 
             $profile = Profile::create([
                'user_id' => $user ->id,
-                'avatar' =>'uploads/avatars/avatar-icon-png-8.jpg'
+                'avatar' =>'uploads/avatars/avatar-icon-png-8.jpg',
+                'show_themes' => 0,
             ]);
 
             Session::flash('success','User created');

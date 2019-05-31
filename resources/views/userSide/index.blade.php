@@ -62,8 +62,8 @@
                                 <div class="course_title"><a href="#"></a></div>
                                 <div class="course_info">
                                     <ul>
-                                        <li><a href="#">{{$subject->teachers->first()->name}}</a></li>
-                                        <li><a href="#">{{$subject->name}}</a></li>
+                                        <li><h4>{{$subject->teachers->first()->name}}</h4></li>
+                                        <li><h4>{{$subject->name}}</h4></li>
                                     </ul>
                                 </div>
                                 <div class="course_text">
@@ -99,7 +99,7 @@
                                 <div class="instructor_image"><img src="{{$teacher->user->profile->avatar}}" class="zaebal"
                                     height="150px"></div>
                             </div>
-                            <div class="instructor_name"><a href="#">{{$teacher->name}} {{$teacher->user->name}}</a></div>
+                            <div class="instructor_name"><h4>{{$teacher->name}} {{$teacher->user->name}}</h4></div>
                             <div class="instructor_title">Teacher</div>
                             <div class="instructor_text">
                                 <p>{{$teacher->department->name}}</p>

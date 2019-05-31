@@ -80,24 +80,28 @@ class ProfilesController extends Controller
     {
         $this -> validate($request,[
             'name' => 'required',
-            'surname' => 'required'
+            'surname' => 'required',
         ]);
 
         $user = Auth::user();
 
         if($request->hasFile('avatar'))
         {
-            $avatar =$request -> avatar;
+            $avatar = $request->avatar;
             $avatar_new_name = time().$avatar->getClientOriginalName();
-            $avatar ->move('uploads/avatars', $avatar_new_name);
-            $user -> profile -> avatar = 'uploads/avatars/'.$avatar_new_name;
-            $user -> profile ->save();
+            $avatar->move('uploads/avatars', $avatar_new_name);
+            $user->profile->avatar = 'uploads/avatars/'.$avatar_new_name;
+            $user->profile->save();
         }
-
-        $user -> name = $request -> name;
-        $user -> profile -> surname = $request -> surname;
-        $user -> save();
-        $user -> profile ->save();
+        $show_themes = 0;
+        if($request->show_themes){
+            $show_themes = 1;
+        }
+        $user->name = $request->name;
+        $user->profile->surname = $request->surname;
+        $user->profile->show_themes = $show_themes;
+        $user->save();
+        $user->profile->save();
 
         Session::flash('success', 'Account profile updated');
 

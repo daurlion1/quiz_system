@@ -13,14 +13,14 @@
             <div class="form-group mb-lg">
                 <label for="inputName">New name <span
                             class="required">*</span></label>
-                    <input type="text" value="{{Auth::user() ->name}}"  class="form-control input-lg" name="name"  required/>
+                    <input type="text" value="{{Auth::user()->name}}"  class="form-control input-lg" name="name"  required/>
             </div>
 
             <div class="form-group mb-lg">
                 <label for="inputName">Surname <span
                             class="required">*</span></label>
                     {{--@php dd(Auth::user()->profile) @endphp--}}
-                    <input type="text"  class="form-control input-lg"  value="{{Auth::user() -> profile -> surname }}"  name ="surname" required/>
+                    <input type="text"  class="form-control input-lg"  value="{{Auth::user()->profile->surname }}"  name ="surname" required/>
             </div>
 
 
@@ -32,6 +32,13 @@
             <div class="form-group mb-lg">
                 <label for="inputName">Your avatar</label>
                     <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="400" height="250px">
+            </div>
+            <div class="form-group mb-lg">
+                <label for="inputName">See themes by test results</label>
+                <input type="checkbox" class="form-control input-lg" name="show_themes"
+                @if(Auth::user()->profile->show_themes==1) checked
+                       @endif
+                />
             </div>
             <div class="col-sm-4 text-right">
                 <button type="submit" class="btn btn-primary">Edit Profile</button>
