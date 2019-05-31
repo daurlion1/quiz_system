@@ -55,7 +55,7 @@ class UserSideController extends Controller
             $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
             $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
 //            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
-            DB::table('student_themes')
+            $student_themes = DB::table('student_themes')
                 ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
                 ->where('student_quiz_id', $student_quiz_id)
                 ->orderBy('themes.order', 'asc')
