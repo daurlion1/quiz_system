@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputQuestion">Subject <span
+                            <label class="col-md-3 control-label" for="inputQuestion">Subject and Order<span
                                         class="required">*</span></label>
                             <div class="col-md-6">
                                 <select class="form-control mb-md" id="inputQuestion" name="subject_id" required>
@@ -50,6 +50,14 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="inputOrder">Order <span
+                                            class="required">*</span></label>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" id="inputOrder" name="order" min="1" required/>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <footer class="panel-footer">

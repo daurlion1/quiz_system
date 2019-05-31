@@ -38,6 +38,7 @@ class ThemesController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'subject_id' => 'required',
+            'order' => 'required',
 
 
 
@@ -46,6 +47,7 @@ class ThemesController extends Controller
         $theme = Theme::create([
             'name' => $request->name,
             'subject_id' => $request->subject_id,
+            'order' => $request->order,
 
 
         ]);
@@ -78,10 +80,12 @@ class ThemesController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'subject_id' => 'required',
+            'order' => 'required'
 
         ]);
         $theme->name=$request->name;
         $theme->subject_id=$request->subject_id;
+        $theme->order = $request->order;
 
         $theme->save();
 

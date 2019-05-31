@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputSubject">Subject <span
+                            <label class="col-md-3 control-label" for="inputSubject">Subject and Order <span
                                         class="required">*</span></label>
                             <div class="col-md-6">
                                 <select class="form-control mb-md" id="inputSubject" name="subject_id" required>
@@ -55,6 +55,15 @@
                                         @endif
                                     @endforeach
                                 </select>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="inputOrder">Order <span
+                                                class="required">*</span></label>
+                                    <div class="col-md-6">
+                                        <input value="{{$theme->order}}" type="number" class="form-control"
+                                               id="inputOrder" name="order" min="1" required/>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
