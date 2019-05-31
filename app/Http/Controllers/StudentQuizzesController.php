@@ -120,8 +120,9 @@ class StudentQuizzesController extends Controller
                             $show = 1;
                         }
                     }
-                    } else {
+                    else {
                         $amount_percent = 0;
+                    }
                     }
                     StudentThemes::create([
                         'theme_id' => $key,
