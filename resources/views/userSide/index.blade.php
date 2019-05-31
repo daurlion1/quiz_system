@@ -57,9 +57,9 @@
                     @if($subject->teachers->first())
                     <div class="col-lg-4 course_col">
                         <div class="course">
-                            <div class="course_image"><img src="{{asset('userSide/images/main_picture.jpg')}}" alt=""></div>
+                            <div class="course_image"><img src="{{asset('userSide/images/course.jpg')}}" alt=""></div>
                             <div class="course_body">
-                                <div class="course_title"><a href="#"></a></div>
+                                <div class="course_title">{{$subject->name}}</div>
                                 <div class="course_info">
                                     <ul>
                                         <li><h4>{{$subject->teachers->first()->name}}</h4></li>

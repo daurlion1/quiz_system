@@ -21,7 +21,7 @@
 
     <div class="intro">
         <div class="intro_background parallax-window" data-parallax="scroll"
-             data-image-src="{{asset('userSide/images/intro.jpg')}}" data-speed="0.8"></div>
+             data-image-src="{{asset('userSide/images/course_image.jpg')}}" data-speed="0.8"></div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -29,12 +29,11 @@
                         <div class="intro_content">
                             <div class="intro_price">Free</div>
                             <div class="rating_r rating_r_4 intro_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                            <div class="intro_title">Vocabulary. Part 1</div>
+                            <div class="intro_title">{{$subject->name}}</div>
                             <div class="intro_meta">
                                 <div class="intro_image"><img src="{{asset('userSide/images/intro_user.jpg')}}" alt="">
                                 </div>
-                                <div class="intro_instructors"><a href="instructors.html">{{$teacher}}</a> and <span><a
-                                                href="instructors.html">{{$count}} other instructors</a></span></div>
+                                <div class="intro_instructors">{{$teacher}}</a> and <span>{{$count}} other instructors</span></div>
                             </div>
                         </div>
                     </div>
@@ -139,128 +138,11 @@
                             </div>
                         </div>
 
-                        <!-- Reviews -->
-                        <div class="tab_panel reviews">
-                            <div class="panel_title">Reviews</div>
-                            <div class="panel_text">
-                                <p>Lorem ipsum dolor sit amet, te eros consulatu pro, quem labores petentium no sea,
-                                    atqui posidonium interpretaris pri eu. At soleat maiorum platonem vix, no mei case
-                                    fierent. Primis quidam ancillae te mei.</p>
-                            </div>
-                            <div class="cur_ratings_container clearfix">
-                                <div class="cur_rating d-flex flex-column align-items-center justify-content-center">
-                                    <div class="cur_rating_num">4,5</div>
-                                    <div class="rating_r rating_r_4 cur_stars"><i></i><i></i><i></i><i></i><i></i></div>
-                                    <div class="cur_rating_text">Rated 5 out of 3 Ratings</div>
-                                </div>
-                                <div class="cur_rating_progress d-flex flex-column align-items-center justify-content-center">
-                                    <div class="cur_progress d-flex flex-row align-items-center justify-content-between">
-                                        <span>5 stars</span>
-                                        <div id="cur_pbar_1" class="cur_pbar" data-perc="0.80"></div>
-                                    </div>
-                                    <div class="cur_progress d-flex flex-row align-items-center justify-content-between">
-                                        <span>5 stars</span>
-                                        <div id="cur_pbar_2" class="cur_pbar" data-perc="0.20"></div>
-                                    </div>
-                                    <div class="cur_progress d-flex flex-row align-items-center justify-content-between">
-                                        <span>5 stars</span>
-                                        <div id="cur_pbar_3" class="cur_pbar" data-perc="0.0"></div>
-                                    </div>
-                                    <div class="cur_progress d-flex flex-row align-items-center justify-content-between">
-                                        <span>5 stars</span>
-                                        <div id="cur_pbar_4" class="cur_pbar" data-perc="0.0"></div>
-                                    </div>
-                                    <div class="cur_progress d-flex flex-row align-items-center justify-content-between">
-                                        <span>5 stars</span>
-                                        <div id="cur_pbar_5" class="cur_pbar" data-perc="0.0"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="cur_reviews">
-
-                                <!-- Review -->
-                                <div class="review">
-                                    <div class="review_title_container d-flex flex-row align-items-start justify-content-start">
-                                        <div class="review_title d-flex flex-row align-items-center justify-content-center">
-                                            <div class="review_author_image">
-                                                <div><img src="images/review_1.jpg" alt=""></div>
-                                            </div>
-                                            <div class="review_author">
-                                                <div class="review_author_name"><a href="#">Sarah Parker</a></div>
-                                                <div class="review_date">Sep 29, 2017 at 9:48 am</div>
-                                            </div>
-                                        </div>
-                                        <div class="review_stars ml-auto">
-                                            <div class="rating_r rating_r_4 review_rating">
-                                                <i></i><i></i><i></i><i></i><i></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="review_text">
-                                        <p>Nam egestas lorem ex, sit amet commodo tortor faucibus a. Suspendisse
-                                            commodo, turpis a dapibus fermentum, turpis ipsum rhoncus massa, sed commodo
-                                            nisi lectus id ipsum. Sed nec elit vehicula.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Review -->
-                                <div class="review">
-                                    <div class="review_title_container d-flex flex-row align-items-start justify-content-start">
-                                        <div class="review_title d-flex flex-row align-items-center justify-content-center">
-                                            <div class="review_author_image">
-                                                <div><i class="fa fa-user" aria-hidden="true"></i></div>
-                                            </div>
-                                            <div class="review_author">
-                                                <div class="review_author_name"><a href="#">Sarah Parker</a></div>
-                                                <div class="review_date">Sep 29, 2017 at 9:48 am</div>
-                                            </div>
-                                        </div>
-                                        <div class="review_stars ml-auto">
-                                            <div class="rating_r rating_r_4 review_rating">
-                                                <i></i><i></i><i></i><i></i><i></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="review_text">
-                                        <p>Nam egestas lorem ex, sit amet commodo tortor faucibus a. Suspendisse
-                                            commodo, turpis a dapibus fermentum, turpis ipsum rhoncus massa, sed commodo
-                                            nisi lectus id ipsum. Sed nec elit vehicula.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Review -->
-                                <div class="review">
-                                    <div class="review_title_container d-flex flex-row align-items-start justify-content-start">
-                                        <div class="review_title d-flex flex-row align-items-center justify-content-center">
-                                            <div class="review_author_image">
-                                                <div><i class="fa fa-user" aria-hidden="true"></i></div>
-                                            </div>
-                                            <div class="review_author">
-                                                <div class="review_author_name"><a href="#">Sarah Parker</a></div>
-                                                <div class="review_date">Sep 29, 2017 at 9:48 am</div>
-                                            </div>
-                                        </div>
-                                        <div class="review_stars ml-auto">
-                                            <div class="rating_r rating_r_4 review_rating">
-                                                <i></i><i></i><i></i><i></i><i></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="review_text">
-                                        <p>Nam egestas lorem ex, sit amet commodo tortor faucibus a. Suspendisse
-                                            commodo, turpis a dapibus fermentum, turpis ipsum rhoncus massa, sed commodo
-                                            nisi lectus id ipsum. Sed nec elit vehicula.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
                         <!-- Members -->
                         <div class="tab_panel members">
                             <div class="panel_title">Members</div>
                             <div class="panel_text">
-                                <p>Lorem ipsum dolor sit amet, te eros consulatu pro, quem labores petentium no sea,
-                                    atqui posidonium interpretaris pri eu. At soleat maiorum platonem vix, no mei case
-                                    fierent. Primis quidam ancillae te mei.</p>
+                                <p>Teachers who is teach this course.</p>
                             </div>
                             <div class="members_list d-flex flex-row flex-wrap align-items-start justify-content-start">
 
@@ -313,20 +195,20 @@
                                             <div class="feature_text ml-auto">{{$subject->quizzes->count()}}</div>
                                         </li>
 
-                                        <!-- Feature -->
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <div class="feature_title"><i class="fa fa-thumbs-up"
-                                                                          aria-hidden="true"></i><span>Pass Percentage</span>
-                                            </div>
-                                            <div class="feature_text ml-auto">60</div>
-                                        </li>
+                                        {{--<!-- Feature -->--}}
+                                        {{--<li class="d-flex flex-row align-items-start justify-content-start">--}}
+                                            {{--<div class="feature_title"><i class="fa fa-thumbs-up"--}}
+                                                                          {{--aria-hidden="true"></i><span>Pass Percentage</span>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="feature_text ml-auto">60</div>--}}
+                                        {{--</li>--}}
 
-                                        <!-- Feature -->
-                                        <li class="d-flex flex-row align-items-start justify-content-start">
-                                            <div class="feature_title"><i class="fa fa-thumbs-down"
-                                                                          aria-hidden="true"></i><span>Max Retakes</span>
-                                            </div>
-                                            <div class="feature_text ml-auto">5</div>
+                                        {{--<!-- Feature -->--}}
+                                        {{--<li class="d-flex flex-row align-items-start justify-content-start">--}}
+                                            {{--<div class="feature_title"><i class="fa fa-thumbs-down"--}}
+                                                                          {{--aria-hidden="true"></i><span>Max Retakes</span>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="feature_text ml-auto">5</div>--}}
                                         </li>
                                     </ul>
                                 </div>
@@ -345,7 +227,6 @@
                                         <div class="like_item d-flex flex-row align-items-end justify-content-start">
                                             <div class="like_title_container">
                                                 <div class="like_title">{{$subject->name}}</div>
-                                                <div class="like_subtitle">Spanish</div>
                                             </div>
                                             <div class="like_price ml-auto">Free</div>
                                         </div>

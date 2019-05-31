@@ -56,7 +56,7 @@
                         <div class="col-lg-4 course_col">
                             <div class="course">
                                 <div class="course_image"><a href="{{route('course',['id' => $subject->id])}}"><img
-                                                src="{{asset('userSide/images/course_4.jpg')}}" alt=""></a></div>
+                                                src="{{asset('userSide/images/course.jpg')}}" alt=""></a></div>
                                 <div class="course_body">
                                     <div class="course_title">
                                         @if(!$student_quiz)
@@ -69,10 +69,10 @@
                                     <div class="course_info">
                                         <ul>
                                             @if(!$subject->teachers->isEmpty())
-                                                <li><a href="instructors.html">{{$subject->teachers->first()->name}}</a>
+                                                <li>{{$subject->teachers->first()->name}}
                                                 </li>
                                             @else
-                                                <li><a href="instructors.html">{{$subject->name}}</a>
+                                                <li>{{$subject->name}}
                                                 </li>
                                             @endif
                                         </ul>
@@ -89,11 +89,11 @@
                                     </div>
                                 </div>
                                 <div class="course_footer d-flex flex-row align-items-center justify-content-start">
-                                    <div class="course_students"><i class="fa fa-user"
-                                                                    aria-hidden="true"></i><span>10</span></div>
-                                    <div class="course_rating ml-auto"><i class="fa fa-star"
-                                                                          aria-hidden="true"></i><span>4,5</span>
-                                    </div>
+                                    {{--<div class="course_students"><i class="fa fa-user"--}}
+                                                                    {{--aria-hidden="true"></i><span>10</span></div>--}}
+                                    {{--<div class="course_rating ml-auto"><i class="fa fa-star"--}}
+                                                                          {{--aria-hidden="true"></i><span>4,5</span>--}}
+                                    {{--</div>--}}
                                     <div class="course_mark course_free trans_200"><a href="#">Free</a></div>
                                 </div>
                             </div>
