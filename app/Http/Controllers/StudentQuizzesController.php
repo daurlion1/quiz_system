@@ -116,7 +116,7 @@ class StudentQuizzesController extends Controller
                     if(isset($check[$key])){
                     if($key==$check[$key]) {
                         $amount_percent =  $check1[$key]/$result_question_values[$key] * 100;
-                        if ($amount_percent >= 75) {
+                        if ($amount_percent >= 60) {
                             $show = 1;
                         }
                     }
