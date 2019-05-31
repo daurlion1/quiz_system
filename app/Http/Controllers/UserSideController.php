@@ -53,7 +53,7 @@ class UserSideController extends Controller
             $student = Student::where('user_id', Auth::user()->id)->first();
             $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
             $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
-            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
+            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->where('show',1)->get();
             foreach ($student_themes as $student_theme){
                 if($student->character_type == 'Audial')
                     $materials[] = Material::where('theme_id', $student_theme->theme->id)->where('title', 'Audio')->get();
