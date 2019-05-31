@@ -12,6 +12,7 @@ use App\Quiz;
 use App\Teacher;
 use Auth;
 use Session;
+use DB;
 use Illuminate\Http\Request;
 
 class UserSideController extends Controller
