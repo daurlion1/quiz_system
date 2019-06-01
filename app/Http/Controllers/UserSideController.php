@@ -54,6 +54,7 @@ class UserSideController extends Controller
             $student = Student::where('user_id', Auth::user()->id)->first();
             $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
             $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
+            $student_quiz = StudentQuiz::findOrFail($student_quiz_id);
 //            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
             $student_themes = DB::table('student_themes')
                 ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
@@ -77,7 +78,7 @@ class UserSideController extends Controller
             }
 
             return view('userSide.course')
-                ->with(compact('subject', 'quiz_id','subjects', 'materials', 'i', 'teacher', 'count','student'));}
+                ->with(compact('subject', 'quiz_id','subjects', 'materials', 'i', 'teacher', 'count','student', 'student_quiz'));}
 
     }
 

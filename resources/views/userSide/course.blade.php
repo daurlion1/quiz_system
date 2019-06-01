@@ -193,13 +193,13 @@
                                             <div class="feature_text ml-auto">{{$subject->quizzes->count()}}</div>
                                         </li>
 
-                                        {{--<!-- Feature -->--}}
-                                        {{--<li class="d-flex flex-row align-items-start justify-content-start">--}}
-                                            {{--<div class="feature_title"><i class="fa fa-thumbs-up"--}}
-                                                                          {{--aria-hidden="true"></i><span>Pass Percentage</span>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="feature_text ml-auto">60</div>--}}
-                                        {{--</li>--}}
+                                        <!-- Feature -->
+                                        <li class="d-flex flex-row align-items-start justify-content-start">
+                                            <div class="feature_title"><i class="fa fa-thumbs-up"
+                                                                          aria-hidden="true"></i><span>Last result</span>
+                                            </div>
+                                            <div class="feature_text ml-auto">{{$student_quiz->result / $student_quiz->total}}</div>
+                                        </li>
 
                                         {{--<!-- Feature -->--}}
                                         {{--<li class="d-flex flex-row align-items-start justify-content-start">--}}
