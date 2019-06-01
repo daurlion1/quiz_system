@@ -148,7 +148,7 @@
                                 @foreach($subject->teachers as $steacher)
                                     <div class="member">
                                         <div class="member_image"><img src="{{asset($steacher->user->profile->avatar)}}"
-                                                                       alt=""  width="75px" height="71px" alt="" class="zaebal"></div>
+                                                                       alt=""  width="71px" height="67px" alt="" class="zaebal"></div>
                                         <div class="member_title">{{$steacher->name}}</div>
                                     </div>
                                 @endforeach
