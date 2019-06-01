@@ -150,7 +150,7 @@
                                         <div class="member_image"><img src="{{asset($steacher->user->profile->avatar)}}"
                                                                        alt=""  width="75px" height="71px" alt="" class="zaebal">
                                         </div></div>
-                                        <div class="member_title">{{$steacher->name}}</div>
+                                        <div class="member_title"><a href="#"></a>{{$steacher->name}}</div>
                                     </div>
                                 @endforeach
                             </div>

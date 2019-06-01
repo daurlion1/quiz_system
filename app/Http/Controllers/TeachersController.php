@@ -27,13 +27,14 @@ class TeachersController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'department_id' => 'required',
+            'user_id'
 
         ]);
 
         $teacher = Teacher::create([
             'name' => $request->name,
             'department_id' => $request->department_id,
-            'user_id' => Auth::id(),
+            'user_id' => $request->user_id,
         ]);
         $teacher->subjects()->attach($request->subjects);
 
