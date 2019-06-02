@@ -206,7 +206,7 @@
                                             <div class="feature_title"><i class="fa fa-users"
                                                                           aria-hidden="true"></i><span>Type character</span>
                                             </div>
-                                            <div class="feature_text ml-auto">{{}}</div>
+                                            <div class="feature_text ml-auto">{{Auth::user()->student->character_type}}</div>
                                         </li>
                                     </ul>
                                 </div>
