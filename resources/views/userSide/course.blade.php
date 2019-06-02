@@ -201,13 +201,13 @@
                                             <div class="feature_text ml-auto">{{$student_quiz->result}}/{{$student_quiz->total}}</div>
                                         </li>
 
-                                        {{--<!-- Feature -->--}}
-                                        {{--<li class="d-flex flex-row align-items-start justify-content-start">--}}
-                                            {{--<div class="feature_title"><i class="fa fa-thumbs-down"--}}
-                                                                          {{--aria-hidden="true"></i><span>Max Retakes</span>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="feature_text ml-auto">5</div>--}}
-                                        {{--</li>--}}
+                                        <!-- Feature -->
+                                        <li class="d-flex flex-row align-items-start justify-content-start">
+                                            <div class="feature_title"><i class="fa fa-users"
+                                                                          aria-hidden="true"></i><span>Type character</span>
+                                            </div>
+                                            <div class="feature_text ml-auto">{{}}</div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

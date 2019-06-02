@@ -41,44 +41,50 @@ class UserSideController extends Controller
     }
 
     public function course($id){
-        if(!Auth::user()->student){
-            Session::flash('error','You must be student to get this page');
-            return redirect()->back();
+        if(Auth::user()) {
+            if (!Auth::user()->student) {
+                Session::flash('error', 'You must be student to get this page');
+                return redirect()->back();
+            } else {
+                $i = 1;
+                $subjects = Subject::all();
+                $subject = Subject::findOrFail($id);
+                $teacher = $subject->teachers->first()->name;
+                $count = $subject->teachers->count() - 1;
+                $student = Student::where('user_id', Auth::user()->id)->first();
+                $quiz_id = Quiz::where('subject_id', $subject->id)->first()->id;
+                $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id', $quiz_id)->orderBy('id', 'desc')->first()->id;
+                $student_quiz = StudentQuiz::findOrFail($student_quiz_id);
+//            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
+                $student_themes = DB::table('student_themes')
+                    ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
+                    ->where('student_quiz_id', $student_quiz_id)
+                    ->orderBy('themes.order', 'asc')
+                    ->get();
+                if (Auth::user()->profile->show_themes == 1)
+//                $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->where('show', 0)->get();
+                    $student_themes = DB::table('student_themes')
+                        ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
+                        ->where('student_quiz_id', $student_quiz_id)
+                        ->where('show', 0)
+                        ->orderBy('themes.order', 'asc')
+                        ->get();
+                foreach ($student_themes as $student_theme) {
+                    if ($student->character_type == 'Audial')
+                        $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Video')->get();
+
+                    else
+                        $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Audio')->get();
+                }
+
+                return view('userSide.course')
+                    ->with(compact('subject', 'quiz_id', 'subjects', 'materials', 'i', 'teacher', 'count', 'student', 'student_quiz'));
+            }
         }
         else{
-            $i = 1;
-            $subjects = Subject::all();
-            $subject = Subject::findOrFail($id);
-            $teacher = $subject->teachers->first()->name;
-            $count = $subject->teachers->count() - 1;
-            $student = Student::where('user_id', Auth::user()->id)->first();
-            $quiz_id = Quiz::where('subject_id',$subject->id)->first()->id;
-            $student_quiz_id = StudentQuiz::where('student_id', $student->id)->where('quiz_id',$quiz_id)->orderBy('id','desc')->first()->id;
-            $student_quiz = StudentQuiz::findOrFail($student_quiz_id);
-//            $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->get();
-            $student_themes = DB::table('student_themes')
-                ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
-                ->where('student_quiz_id', $student_quiz_id)
-                ->orderBy('themes.order', 'asc')
-                ->get();
-            if(Auth::user()->profile->show_themes == 1)
-//                $student_themes = StudentThemes::where('student_quiz_id', $student_quiz_id)->where('show', 0)->get();
-            $student_themes = DB::table('student_themes')
-                ->join('themes', 'student_themes.theme_id', '=', 'themes.id')
-                ->where('student_quiz_id', $student_quiz_id)
-                ->where('show', 0)
-                ->orderBy('themes.order', 'asc')
-                ->get();
-            foreach ($student_themes as $student_theme){
-                if($student->character_type == 'Audial')
-                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Video')->get();
-
-                else
-                    $materials[] = Material::where('theme_id', $student_theme->theme_id)->where('title', '!=', 'Audio')->get();
-            }
-
-            return view('userSide.course')
-                ->with(compact('subject', 'quiz_id','subjects', 'materials', 'i', 'teacher', 'count','student', 'student_quiz'));}
+            Session::flash('info', 'First u must login');
+            return redirect()->back();
+        }
 
     }
 
