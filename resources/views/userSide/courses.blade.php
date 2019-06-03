@@ -60,7 +60,7 @@
                                 <div class="course_body">
                                     <div class="course_title">
                                         @if($student_quiz)
-                                            @if($student_quiz->quiz->isPsychological)
+                                            @if($student_quiz->quiz->isPsychological == 1)
                                             <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">
                                                 {{$subject->name}}</a>
                                                 @else
