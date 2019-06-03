@@ -24,7 +24,10 @@ class UserSideController extends Controller
         if(Auth::user()->student){
             $student_quiz = StudentQuiz::where('student_id', $student->id)->orderBy('id','desc')->first();
         }
-        if($student_quiz) $check = true;
+        if($student_quiz){
+            if($student_quiz->quiz->isPsychological==1)
+                $check = false;
+            else $check=true;}
         else $check = false;
         return view('userSide.courses')->with('subjects', Subject::all())
             ->with('student_quiz', $check);}

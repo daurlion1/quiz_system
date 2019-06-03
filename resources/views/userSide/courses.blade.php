@@ -59,16 +59,11 @@
                                                 src="{{asset('userSide/images/course.jpg')}}" alt=""></a></div>
                                 <div class="course_body">
                                     <div class="course_title">
-                                        @if($student_quiz)
-                                            @if($student_quiz->quiz->isPsychological == 1)
+                                        @if(!$student_quiz)
                                             <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">
                                                 {{$subject->name}}</a>
-                                                @else
-                                                <a href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
-                                                @endif
                                         @else
-                                            <a href="{{route('quiz.show',['id' => $subject->quizzes->first->id])}}">
-                                                {{$subject->name}}</a>
+                                            <a href="{{route('course',['id' => $subject->id])}}">{{$subject->name}}</a>
                                         @endif
                                     </div>
                                     <div class="course_info">
