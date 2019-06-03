@@ -59,7 +59,7 @@
                         <div class="course">
                             <div class="course_image"><img src="{{asset('userSide/images/course.jpg')}}" alt=""></div>
                             <div class="course_body">
-                                <div class="course_title"><a href="{{route('courses'}}">{{$subject->name}}</a></div>
+                                <div class="course_title"><a href="{{route('courses')}}">{{$subject->name}}</a></div>
                                 <div class="course_info">
                                     <ul>
                                         <li><h4>{{$subject->teachers->first()->name}}</h4></li>
